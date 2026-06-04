@@ -1,26 +1,192 @@
 ---
 /**
- * CompensationCalculator — client-side island (lead magnet on tenant pages).
+ * CompensationCalculator — client-side island, lead magnet on the tenant
+ * compensation page. Gives an INDICATIVE range based on rent, time affected,
+ * severity and whether the problem was reported. No backend, no data stored.
  *
- * SCAFFOLD STUB. Per CLAUDE.md build order, the working calculator logic is
- * built in step 7 alongside Pillar B. This placeholder establishes the
- * component + island wiring so the build is complete; the indicative-range
- * formula and disclaimer copy are intentionally left as a TODO for that step.
+ * The percentage bands are indicative rules of thumb for rent-reduction-style
+ * awards in damp/mould disrepair — NOT a legal calculation. They are flagged for
+ * Dom to verify/adjust before publish.
  */
 ---
 
 <section class="calc card" aria-labelledby="calc-h">
   <h2 id="calc-h">Damp &amp; mould compensation calculator</h2>
-  <p class="calc-note">
-    <!-- TODO (build step 7): inputs = monthly rent, months affected, severity,
-         whether reported to landlord. Output = indicative range + "not legal
-         advice" disclaimer + CTA to the referral LeadForm. Pure client-side JS. -->
-    Calculator coming soon.
+  <p class="calc-intro">
+    Estimate an <strong>indicative</strong> compensation range. This is a rough
+    guide only — not a valuation or legal advice.
+  </p>
+
+  <form class="calc-form" data-calc novalidate>
+    <div class="calc-field">
+      <label for="calc-rent">Monthly rent (£)</label>
+      <input id="calc-rent" name="rent" type="number" inputmode="numeric" min="0" step="10" placeholder="e.g. 950" />
+    </div>
+
+    <div class="calc-field">
+      <label for="calc-months">Months affected</label>
+      <input id="calc-months" name="months" type="number" inputmode="numeric" min="0" max="72" step="1" placeholder="e.g. 6" />
+    </div>
+
+    <div class="calc-field">
+      <label for="calc-severity">How severe is it?</label>
+      <select id="calc-severity" name="severity">
+        <option value="minor">Minor — limited mould, one room, no health impact</option>
+        <option value="moderate" selected>Moderate — several areas, some disruption / mild health effects</option>
+        <option value="severe">Severe — widespread, rooms unusable, health affected</option>
+      </select>
+    </div>
+
+    <fieldset class="calc-field">
+      <legend>Have you reported it to your landlord?</legend>
+      <label class="calc-radio"><input type="radio" name="reported" value="yes" checked /> Yes, in writing</label>
+      <label class="calc-radio"><input type="radio" name="reported" value="no" /> Not yet</label>
+    </fieldset>
+  </form>
+
+  <div class="calc-result" data-calc-result aria-live="polite" hidden>
+    <p class="calc-range-label">Indicative range</p>
+    <p class="calc-range" data-calc-range>—</p>
+    <p class="calc-basis" data-calc-basis></p>
+    <p class="calc-reported-note" data-calc-reported-note hidden></p>
+  </div>
+
+  <div class="calc-disclaimer" role="note">
+    <p>
+      <strong>Indicative only — not legal advice.</strong> Real compensation
+      depends on the facts, the evidence, the impact on you and your household,
+      and the law applied by a court or solicitor. Awards can fall outside this
+      range. Use this as a conversation starter, not a figure to rely on.
+      <!-- TODO: Dom to verify/adjust the severity bands and the "not reported"
+           treatment below against current case law / practitioner norms. -->
+    </p>
+  </div>
+
+  <p class="calc-cta">
+    <a class="btn btn-accent" href="/tenants/find-a-solicitor">Talk to a damp &amp; mould solicitor</a>
   </p>
 </section>
+
+<script is:inline>
+  (function () {
+    var form = document.querySelector("[data-calc]");
+    if (!form) return;
+    var resultBox = document.querySelector("[data-calc-result]");
+    var rangeEl = document.querySelector("[data-calc-range]");
+    var basisEl = document.querySelector("[data-calc-basis]");
+    var reportedNote = document.querySelector("[data-calc-reported-note]");
+
+    // Indicative rent-reduction bands by severity [low, high].
+    // TODO (Dom): verify these percentages before relying on them publicly.
+    var BANDS = {
+      minor: [0.1, 0.25],
+      moderate: [0.25, 0.5],
+      severe: [0.5, 1.0],
+    };
+
+    var gbp = new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 0,
+    });
+
+    function calc() {
+      var rent = parseFloat(form.rent.value);
+      var months = parseFloat(form.months.value);
+      var severity = form.severity.value;
+      var reported = form.reported.value;
+
+      if (!(rent > 0) || !(months > 0)) {
+        resultBox.hidden = true;
+        return;
+      }
+
+      var band = BANDS[severity] || BANDS.moderate;
+      var low = rent * months * band[0];
+      var high = rent * months * band[1];
+
+      rangeEl.textContent = gbp.format(low) + " – " + gbp.format(high);
+      basisEl.textContent =
+        "Based on " + Math.round(band[0] * 100) + "–" + Math.round(band[1] * 100) +
+        "% of " + gbp.format(rent) + " rent over " + months +
+        " month" + (months === 1 ? "" : "s") + ".";
+
+      if (reported === "no") {
+        reportedNote.hidden = false;
+        reportedNote.textContent =
+          "Compensation usually only runs from when your landlord knew about the problem. Report it in writing as soon as possible to protect your position.";
+      } else {
+        reportedNote.hidden = true;
+      }
+
+      resultBox.hidden = false;
+    }
+
+    form.addEventListener("input", calc);
+    form.addEventListener("change", calc);
+  })();
+</script>
 
 <style>
   .calc { margin-block: var(--space-12); }
   .calc h2 { margin-top: 0; }
-  .calc-note { color: var(--color-muted); }
+  .calc-intro { color: var(--color-muted); }
+  .calc-field { margin-bottom: var(--space-4); border: 0; padding: 0; }
+  .calc-field > label,
+  .calc-field legend { display: block; font-weight: 600; margin-bottom: var(--space-1); padding: 0; }
+  .calc-field input[type="number"],
+  .calc-field select {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font: inherit;
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+  .calc-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-right: var(--space-6);
+    font-weight: 400;
+  }
+  .calc-result {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    margin-block: var(--space-6);
+    text-align: center;
+  }
+  .calc-range-label {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    margin: 0 0 var(--space-2);
+  }
+  .calc-range {
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0 0 var(--space-2);
+  }
+  .calc-basis { font-size: 0.875rem; color: var(--color-muted); margin: 0; }
+  .calc-reported-note {
+    margin: var(--space-4) 0 0;
+    color: var(--color-warn);
+    font-weight: 600;
+    font-size: 0.9375rem;
+  }
+  .calc-disclaimer {
+    background: var(--color-warn-bg);
+    border-left: 4px solid var(--color-warn);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: var(--space-4) var(--space-6);
+    font-size: 0.9375rem;
+  }
+  .calc-disclaimer p { margin: 0; }
+  .calc-cta { margin-top: var(--space-6); }
 </style>

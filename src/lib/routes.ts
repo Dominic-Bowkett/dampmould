@@ -20,6 +20,17 @@ export const PILLAR_LABEL: Record<Collection, string> = {
   professional: "Landlords & professionals",
 };
 
+/**
+ * The landing/pillar page for each collection — used for the breadcrumb trail.
+ * Not every collection has a page at its base path (tenants/professional don't),
+ * so this points at the real hub page instead of a would-be 404.
+ */
+export const PILLAR_HOME: Record<Collection, string> = {
+  "awaabs-law": "/awaabs-law",
+  tenants: "/tenants/damp-mould-rights",
+  professional: "/hhsrs",
+};
+
 /** Build the public URL for an entry from its collection + slug. */
 export function urlFor(collection: Collection, slug: string): string {
   // An "index" slug represents the collection's landing page.

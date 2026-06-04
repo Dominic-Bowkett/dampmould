@@ -9,9 +9,8 @@
  */
 import { getCollection, type CollectionEntry } from "astro:content";
 import ArticleLayout from "../layouts/ArticleLayout.astro";
-import { NAV } from "../config";
 import type { Crumb } from "../lib/schema";
-import { type Collection, BASE, PILLAR_LABEL, urlFor } from "../lib/routes";
+import { type Collection, PILLAR_LABEL, PILLAR_HOME, urlFor } from "../lib/routes";
 
 export async function getStaticPaths() {
   const collections: Collection[] = ["awaabs-law", "tenants", "professional"];
@@ -54,13 +53,12 @@ const { Content } = await entry.render();
 const data = entry.data;
 
 const selfUrl = urlFor(collection, entry.slug);
-const isPillarLanding = selfUrl === BASE[collection] || selfUrl === `${BASE[collection]}`;
+const isPillarLanding = selfUrl === PILLAR_HOME[collection];
 
-// Breadcrumb trail: Home → Pillar → (this page, unless it IS the pillar page).
+// Breadcrumb trail: Home → Pillar hub → (this page, unless it IS the hub page).
 const crumbs: Crumb[] = [{ label: "Home", href: "/" }];
-const pillarHref = BASE[collection] || (NAV.find((n) => n.label === "HHSRS")?.href ?? "/");
 if (!isPillarLanding) {
-  crumbs.push({ label: PILLAR_LABEL[collection], href: pillarHref || "/" });
+  crumbs.push({ label: PILLAR_LABEL[collection], href: PILLAR_HOME[collection] });
 }
 crumbs.push({ label: data.title, href: selfUrl });
 ---
