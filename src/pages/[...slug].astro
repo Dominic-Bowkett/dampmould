@@ -13,7 +13,7 @@ import type { Crumb } from "../lib/schema";
 import { type Collection, PILLAR_LABEL, PILLAR_HOME, urlFor } from "../lib/routes";
 
 export async function getStaticPaths() {
-  const collections: Collection[] = ["awaabs-law", "tenants", "professional"];
+  const collections: Collection[] = ["awaabs-law", "tenants", "professional", "advice"];
   const all = (
     await Promise.all(
       collections.map(async (c) => {

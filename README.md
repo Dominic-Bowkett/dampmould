@@ -58,4 +58,5 @@ images, Lighthouse + schema validation).
 - [x] **7.** Pillar B — tenant help (4 pages) + compensation calculator + lead form
 - [x] **8.** Pillar C — HHSRS hub + surveyor/specialist/survey/careers/courses (8 pages)
 - [x] **9.** /tool, /privacy, /contact + OG image (no broken internal links; 21 pages)
-- [ ] 10. Lighthouse + schema validation pass
+- [x] **10.** SEO pass (titles/meta/keywords/schema/interlinking) — see `docs/SEO-AUDIT.md`
+- [x] **+ Advice cluster** — `/advice/` (15 pages, KEYWORDS.md §B); site now 36 pages

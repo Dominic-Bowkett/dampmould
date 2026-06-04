@@ -86,11 +86,16 @@ and minimal CSS. To verify:
 
 ---
 
-## 5. Biggest opportunity: the advice cluster (KEYWORDS.md §B) — NOT yet built
+## 5. Advice cluster (KEYWORDS.md §B) — ✅ BUILT
 
-This is the largest untapped win and is **not in the current 21 pages**. The data
-shows big, easy, on-strategy informational volume that pulls worried tenants AND
-homeowners/landlords and converts to the surveyor service / tool:
+Built as a `/advice/` collection (15 pages: hub + 14 guides). Each "how to" page
+has `HowTo` schema + numbered steps; all have FAQ + Article/Person/Breadcrumb
+schema; every page interlinks to the relevant service/compliance page
+(`/damp-mould-surveyor`, `/tenants/damp-mould-rights`, `/awaabs-law`). The health
+page (`is-mould-dangerous`) is YMYL — flagged throughout to verify against NHS.
+Product-brand terms (mould magic, anti-mould paint, cillit bang) deliberately
+excluded. Primary keyword is in the meta description on all 14; in title+H1 too on
+the KD 0–2 priority pages. Original target list (for reference):
 
 | Proposed page | Primary keyword | Vol | KD | CPC |
 |---|---|---|---|---|

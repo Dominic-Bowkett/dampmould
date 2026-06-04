@@ -35,7 +35,7 @@ export const AUTHOR = {
 export const NAV = [
   { label: "Awaab's Law", href: "/awaabs-law" },
   { label: "Tenant rights", href: "/tenants/damp-mould-rights" },
-  { label: "Compensation", href: "/tenants/compensation" },
+  { label: "Advice", href: "/advice" },
   { label: "HHSRS", href: "/hhsrs" },
   { label: "Find a surveyor", href: "/damp-mould-surveyor" },
   { label: "About", href: "/about" },
@@ -60,6 +60,12 @@ export const FOOTER_LINKS = {
     { label: "Damp & mould surveyor", href: "/damp-mould-surveyor" },
     { label: "Training courses", href: "/training-courses" },
     { label: "Inspection tool", href: "/tool" },
+  ],
+  "Damp & mould advice": [
+    { label: "Get rid of mould on walls", href: "/advice/how-to-get-rid-of-mould-on-walls" },
+    { label: "Condensation", href: "/advice/condensation" },
+    { label: "Rising damp", href: "/advice/rising-damp" },
+    { label: "Is mould dangerous?", href: "/advice/is-mould-dangerous" },
   ],
   Site: [
     { label: "About the author", href: "/about" },

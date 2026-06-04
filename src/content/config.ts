@@ -18,8 +18,8 @@ const howToStep = z.object({
 const articleSchema = z.object({
   title: z.string(),
   description: z.string(),
-  /** Content pillar: a = Awaab's Law, b = tenant help, c = landlord/pro. */
-  pillar: z.enum(["a", "b", "c"]),
+  /** Content pillar: a = Awaab's Law, b = tenant help, c = landlord/pro, advice = how-to/info. */
+  pillar: z.enum(["a", "b", "c", "advice"]),
   /** Primary audience — drives the contextual CTA. */
   audience: z.enum(["tenant", "landlord", "professional"]),
   /** Primary SEO target keyword for this page. */
@@ -43,9 +43,11 @@ const articleSchema = z.object({
 const awaabsLaw = defineCollection({ type: "content", schema: articleSchema });
 const tenants = defineCollection({ type: "content", schema: articleSchema });
 const professional = defineCollection({ type: "content", schema: articleSchema });
+const advice = defineCollection({ type: "content", schema: articleSchema });
 
 export const collections = {
   "awaabs-law": awaabsLaw,
   tenants,
   professional,
+  advice,
 };
