@@ -1,42 +1,142 @@
 ---
 /**
- * PLACEHOLDER HOME — scaffold only.
- * The real audience-routing homepage is build-order step 5. This holding page
- * exists so the project builds and the base layout/header/footer/tokens can be
- * reviewed. Replace its body in step 5.
+ * Home — routes the three audiences (tenants, landlords, professionals) to the
+ * right pillar, with an author trust strip for E-E-A-T. Sitewide schema:
+ * WebSite + Organization + Person.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE, AUTHOR } from "../config";
+import { graph, webSiteSchema, organizationSchema, personSchema } from "../lib/schema";
+
+const schema = graph(webSiteSchema(), organizationSchema(), personSchema());
+
+// Three audience pathways shown as cards.
+const audiences = [
+  {
+    kicker: "Tenants",
+    title: "Damp or mould in your home?",
+    body: "Know your rights, what your landlord must do under Awaab's Law, and whether you could claim compensation.",
+    href: "/tenants/damp-mould-rights",
+    cta: "Your rights as a tenant",
+    links: [
+      { label: "How much compensation?", href: "/tenants/compensation" },
+      { label: "How to claim", href: "/tenants/how-to-claim" },
+      { label: "Find a solicitor", href: "/tenants/find-a-solicitor" },
+    ],
+  },
+  {
+    kicker: "Landlords",
+    title: "Need to stay compliant?",
+    body: "Understand Awaab's Law duties, HHSRS hazard assessment and how to evidence that a property is safe.",
+    href: "/awaabs-law",
+    cta: "Awaab's Law guide",
+    links: [
+      { label: "Does it apply to private landlords?", href: "/awaabs-law/private-landlords" },
+      { label: "Timescales & deadlines", href: "/awaabs-law/timescales" },
+      { label: "HHSRS explained", href: "/hhsrs" },
+    ],
+  },
+  {
+    kicker: "Professionals",
+    title: "Work in housing or surveying?",
+    body: "Practitioner guides to HHSRS, damp & mould surveying, and the training to build a career in the field.",
+    href: "/hhsrs",
+    cta: "HHSRS hub",
+    links: [
+      { label: "HHSRS inspection guide", href: "/hhsrs/inspection" },
+      { label: "Become a damp & mould surveyor", href: "/become-a-damp-mould-surveyor" },
+      { label: "Training courses", href: "/training-courses" },
+    ],
+  },
+];
 ---
 
-<BaseLayout
-  title={SITE.name}
-  description={SITE.tagline}
-  ogType="website"
->
+<BaseLayout title={SITE.name} description={SITE.tagline} ogType="website" schema={[schema]}>
+  <!-- Hero -->
   <section class="hero">
     <div class="container measure">
-      <p class="kicker">Scaffold preview</p>
-      <h1>{SITE.name}</h1>
-      <p class="lede">{SITE.tagline}</p>
-      <p class="note">
-        This is a placeholder home page used to review the base layout,
-        components and design tokens. Real page content (home, about and the
-        three content pillars) is written in later build steps.
+      <p class="kicker">Awaab's Law · HHSRS · damp &amp; mould — England</p>
+      <h1>Clear, practitioner-led help with damp, mould and Awaab's Law</h1>
+      <p class="lede">
+        Plain-English guidance for tenants, landlords and housing professionals —
+        written and reviewed by a qualified building surveyor.
       </p>
-      <p class="byline">
-        Authored by {AUTHOR.name} — {AUTHOR.credentials.join(" · ")}
+      <p class="hero-actions">
+        <a class="btn btn-primary" href="/awaabs-law">Start with Awaab's Law</a>
+        <a class="btn btn-ghost" href="/tenants/damp-mould-rights">I'm a tenant</a>
       </p>
-      <p class="actions">
-        <a class="btn btn-primary" href="/about">About the author</a>
-        <a class="btn btn-ghost" href="/awaabs-law">Awaab's Law guide</a>
+      <p class="hero-scope">
+        Guidance here is for <strong>England</strong>. Rules differ in Scotland and Wales.
       </p>
     </div>
+  </section>
+
+  <!-- Audience pathways -->
+  <section class="section container" aria-labelledby="paths-h">
+    <h2 id="paths-h" class="section-h">Find the right help for you</h2>
+    <div class="cards">
+      {
+        audiences.map((a) => (
+          <article class="card path-card">
+            <p class="path-kicker">{a.kicker}</p>
+            <h3>{a.title}</h3>
+            <p class="path-body">{a.body}</p>
+            <ul class="path-links">
+              {a.links.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+            <a class="btn btn-primary path-cta" href={a.href}>
+              {a.cta}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Author trust strip (E-E-A-T) -->
+  <section class="section container" aria-labelledby="trust-h">
+    <div class="trust card measure">
+      <img
+        class="trust-photo"
+        src={AUTHOR.photo}
+        alt={`${AUTHOR.name}, ${AUTHOR.jobTitle}`}
+        width="88"
+        height="88"
+        loading="lazy"
+        decoding="async"
+      />
+      <div>
+        <h2 id="trust-h" class="trust-h">Why trust this site?</h2>
+        <p>
+          Every guide is written and reviewed by <strong>{AUTHOR.name}</strong> —
+          {AUTHOR.credentials.join(" · ")} — a {AUTHOR.jobTitle.toLowerCase()}.
+          We cite official sources (gov.uk, legislation.gov.uk) and flag anything
+          you should verify before relying on it.
+        </p>
+        <p><a href={AUTHOR.aboutUrl}>About the author and our editorial approach →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <section class="section container">
+    <p class="home-disclaimer measure">
+      This site is information only and is not legal advice. For advice on your
+      specific situation, speak to a qualified solicitor or surveyor.
+    </p>
   </section>
 </BaseLayout>
 
 <style>
-  .hero { padding-block: var(--space-16); }
+  .hero {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-16);
+  }
   .kicker {
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -45,8 +145,49 @@ import { SITE, AUTHOR } from "../config";
     color: var(--color-primary);
     margin-bottom: var(--space-2);
   }
-  .lede { font-size: 1.25rem; color: var(--color-ink); }
-  .note { color: var(--color-muted); }
-  .byline { color: var(--color-muted); font-size: 0.9375rem; }
-  .actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-6); }
+  .lede { font-size: 1.1875rem; color: var(--color-ink); }
+  .hero-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-6); }
+  .hero-scope { font-size: 0.875rem; color: var(--color-muted); margin-top: var(--space-6); }
+
+  .section { padding-block: var(--space-12); }
+  .section-h { text-align: center; margin-bottom: var(--space-8); }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-6);
+  }
+  .path-card { display: flex; flex-direction: column; }
+  .path-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    margin: 0 0 var(--space-2);
+  }
+  .path-card h3 { margin-top: 0; }
+  .path-body { color: var(--color-muted); }
+  .path-links { list-style: none; padding: 0; margin: 0 0 var(--space-6); }
+  .path-links li { margin-bottom: var(--space-2); }
+  .path-links a { font-weight: 500; }
+  .path-cta { margin-top: auto; align-self: flex-start; }
+
+  .trust { display: flex; gap: var(--space-6); align-items: flex-start; }
+  .trust-photo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    background: var(--color-border);
+  }
+  .trust-h { margin-top: 0; font-size: 1.375rem; }
+  .trust p:last-child { margin-bottom: 0; }
+
+  .home-disclaimer { color: var(--color-muted); font-size: 0.875rem; text-align: center; }
+
+  @media (max-width: 519px) {
+    .trust { flex-direction: column; }
+  }
 </style>

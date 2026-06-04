@@ -42,6 +42,19 @@ export function organizationSchema(): JsonLd {
   };
 }
 
+/** WebSite node — used on the home page for sitewide identity. */
+export function webSiteSchema(): JsonLd {
+  return {
+    "@type": "WebSite",
+    "@id": absUrl("#website"),
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.tagline,
+    inLanguage: "en-GB",
+    publisher: { "@id": absUrl("#organization") },
+  };
+}
+
 interface ArticleInput {
   title: string;
   description: string;

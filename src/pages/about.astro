@@ -1,0 +1,176 @@
+---
+/**
+ * About — the author authority page (E-E-A-T anchor). Full credentials, what the
+ * site is, and the editorial approach. Schema: Person (w/ hasCredential) +
+ * Organization + BreadcrumbList. Biographical specifics are left as TODOs for
+ * Dom — we only assert the credentials given in the brief.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { AUTHOR } from "../config";
+import { graph, personSchema, organizationSchema, breadcrumbSchema } from "../lib/schema";
+import type { Crumb } from "../lib/schema";
+
+const title = `About ${AUTHOR.name} — Building Surveyor & Damp/Mould Specialist`;
+const description = `${AUTHOR.name} (${AUTHOR.credentials.join(", ")}) is a qualified Domestic Energy Assessor and building surveyor. About the author and the editorial approach behind this damp, mould and Awaab's Law hub.`;
+
+const crumbs: Crumb[] = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+];
+
+const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crumbs));
+
+// Credential glossary — explains each post-nominal in plain English.
+// TODO: Dom to confirm the exact awarding bodies / wording for each.
+const credentialNotes = [
+  { code: "CertDEA", note: "Certified Domestic Energy Assessor — qualified to produce Energy Performance Certificates (EPCs)." },
+  { code: "BA Hons", note: "Bachelor of Arts with Honours." },
+  { code: "GDL", note: "Graduate Diploma in Law — conversion qualification in English law." },
+  { code: "MSc", note: "Master of Science. <!-- TODO: Dom to add subject/field -->" },
+  { code: "MRPSA (Trustmark)", note: "Member of the Residential Property Surveyors Association, Trustmark-registered." },
+];
+
+const lastReviewed = new Date("2026-06-04");
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+---
+
+<BaseLayout title={title} description={description} ogType="article" schema={[schema]}>
+  <div class="container">
+    <article class="about measure">
+      <Breadcrumbs crumbs={crumbs} />
+
+      <header>
+        <h1>About {AUTHOR.name}</h1>
+        <p class="reviewed">Last reviewed <time datetime={lastReviewed.toISOString()}>{fmt(lastReviewed)}</time></p>
+      </header>
+
+      <div class="intro">
+        <img
+          class="about-photo"
+          src={AUTHOR.photo}
+          alt={`${AUTHOR.name}, ${AUTHOR.jobTitle}`}
+          width="120"
+          height="120"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="about-lead">
+          <strong>{AUTHOR.name}</strong>, {AUTHOR.credentials.join(" · ")} — a
+          {" "}{AUTHOR.jobTitle.toLowerCase()} specialising in housing health,
+          HHSRS hazard assessment and damp &amp; mould.
+        </p>
+      </div>
+
+      <h2>Who I am</h2>
+      <p>
+        I'm a qualified Domestic Energy Assessor and building surveyor working in
+        residential property condition and housing health. My focus is the area
+        where building performance meets people's wellbeing: damp, mould,
+        ventilation and the hazards assessed under the Housing Health and Safety
+        Rating System (HHSRS).
+      </p>
+      <p>
+        <!-- TODO: Dom to add real career detail — years of experience, types of
+             property/clients, notable roles or projects, professional history.
+             Keep claims accurate and verifiable. -->
+        I created this site to give tenants, landlords and fellow professionals
+        a single, trustworthy place to understand their rights and duties as
+        Awaab's Law reshapes how damp and mould must be handled in England.
+      </p>
+
+      <h2>My qualifications</h2>
+      <p>
+        I write under my real name and credentials because, in a subject that
+        affects people's health and money, expertise should be visible and
+        checkable:
+      </p>
+      <dl class="creds">
+        {
+          credentialNotes.map((c) => (
+            <div class="cred">
+              <dt>{c.code}</dt>
+              <dd set:html={c.note} />
+            </div>
+          ))
+        }
+      </dl>
+      <p class="creds-note">
+        <!-- TODO: Dom to add links to verify memberships (e.g. RPSA / Trustmark
+             register) and the EPC assessor register, where public. -->
+        Where possible I link to the public registers so you can verify these
+        credentials independently.
+      </p>
+
+      <h2>What this site covers</h2>
+      <p>It serves three audiences, each with its own guidance:</p>
+      <ul>
+        <li><strong>Tenants</strong> — your rights, what landlords must do, and how compensation works. Start with <a href="/tenants/damp-mould-rights">your rights as a tenant</a>.</li>
+        <li><strong>Landlords</strong> — Awaab's Law duties, timescales and HHSRS compliance. Start with the <a href="/awaabs-law">Awaab's Law guide</a>.</li>
+        <li><strong>Professionals</strong> — HHSRS methodology, surveying and training. Start with the <a href="/hhsrs">HHSRS hub</a>.</li>
+      </ul>
+
+      <h2>How I keep this accurate (editorial approach)</h2>
+      <ul>
+        <li><strong>Primary sources.</strong> Legal and regulatory points cite official sources — <a href="https://www.gov.uk" rel="nofollow">gov.uk</a> and <a href="https://www.legislation.gov.uk" rel="nofollow">legislation.gov.uk</a>.</li>
+        <li><strong>Reviewed and dated.</strong> Each guide shows a "last reviewed" date so you can see how current it is.</li>
+        <li><strong>Plain about scope.</strong> Guidance is for England; differences in Scotland and Wales are flagged.</li>
+        <li><strong>Not legal advice.</strong> This is general information. For your specific situation, take professional advice.</li>
+      </ul>
+
+      <section class="about-cta card">
+        <h2>Get in touch</h2>
+        <p>
+          Questions, a correction, or an enquiry about a survey or training?
+          I'd be glad to hear from you.
+        </p>
+        <a class="btn btn-primary" href="/contact">Contact {AUTHOR.name.split(" ")[0]}</a>
+      </section>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .about { padding-block: var(--space-8) var(--space-12); }
+  .reviewed {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    margin-top: calc(-1 * var(--space-2));
+  }
+  .intro {
+    display: flex;
+    gap: var(--space-6);
+    align-items: center;
+    margin-block: var(--space-6) var(--space-8);
+  }
+  .about-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    background: var(--color-border);
+  }
+  .about-lead { font-size: 1.0625rem; margin: 0; }
+
+  .creds { margin: var(--space-6) 0; }
+  .cred {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .cred dt { font-weight: 700; color: var(--color-primary); }
+  .cred dd { margin: 0; color: var(--color-ink); }
+  .creds-note { color: var(--color-muted); font-size: 0.9375rem; }
+
+  .about-cta { margin-top: var(--space-12); }
+  .about-cta h2 { margin-top: 0; }
+
+  @media (max-width: 519px) {
+    .intro { flex-direction: column; align-items: flex-start; }
+    .cred { grid-template-columns: 1fr; gap: var(--space-1); }
+  }
+</style>
