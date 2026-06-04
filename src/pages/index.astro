@@ -133,7 +133,9 @@ const audiences = [
 
 <style>
   .hero {
-    background: var(--color-surface);
+    background:
+      radial-gradient(1100px 420px at 12% -10%, #d8f7e4 0%, rgba(216, 247, 228, 0) 60%),
+      linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
     border-bottom: 1px solid var(--color-border);
     padding-block: var(--space-16);
   }
@@ -157,7 +159,16 @@ const audiences = [
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-6);
   }
-  .path-card { display: flex; flex-direction: column; }
+  .path-card {
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid var(--color-accent);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .path-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(15, 21, 18, .1);
+  }
   .path-kicker {
     text-transform: uppercase;
     letter-spacing: 0.05em;

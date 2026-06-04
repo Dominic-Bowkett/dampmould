@@ -1,16 +1,20 @@
 :root {
-  /* Calm, professional palette (per CLAUDE.md §6 — NOT brewery neo-brutalist) */
+  /* Fresh, professional palette — bright green + white + black, with a pop.
+     All text/UI combinations meet WCAG AA contrast on their backgrounds. */
   --color-bg: #ffffff;
-  --color-surface: #f5f7f8;
-  --color-ink: #1a2b33;          /* near-black slate */
-  --color-muted: #5a6b73;
-  --color-primary: #0f6e8c;      /* trustworthy teal-blue */
-  --color-primary-dark: #0a4f66;
-  --color-accent: #1d8a6e;       /* calm green for positive CTAs */
-  --color-accent-dark: #166b54;
+  --color-surface: #f1faf4;      /* very light green tint */
+  --color-ink: #0f1512;          /* near-black (slight green) */
+  --color-muted: #566b60;        /* muted green-grey (AA on white) */
+  --color-primary: #12824a;      /* deep green — links & primary buttons (AA) */
+  --color-primary-dark: #0b5e34; /* hover */
+  --color-accent: #1fc964;       /* BRIGHT green — the "pop" (use with dark text) */
+  --color-accent-dark: #15803d;  /* readable green for small text/accents (AA) */
   --color-warn: #b4541a;         /* muted amber for deadlines/warnings */
   --color-warn-bg: #fbf2ea;
-  --color-border: #dde4e7;
+  --color-border: #d8e6dd;       /* light green-grey border */
+  --color-footer-bg: #0f1512;    /* near-black footer */
+  --color-on-dark: #eaf3ee;      /* body text on dark surfaces */
+  --color-on-dark-muted: #9db3a8;
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-heading: var(--font-sans);
@@ -123,23 +127,36 @@ img { max-width: 100%; height: auto; }
 /* ---- Buttons / CTAs ---- */
 .btn {
   display: inline-block;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius);
   border: 1px solid transparent;
   cursor: pointer;
   line-height: 1.2;
-  transition: background-color .15s ease, border-color .15s ease;
+  transition: background-color .15s ease, border-color .15s ease,
+    transform .12s ease, box-shadow .15s ease;
 }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+/* Primary: deep green, white text — links/main actions. */
 .btn-primary { background: var(--color-primary); color: #fff; }
 .btn-primary:hover { background: var(--color-primary-dark); color: #fff; }
-.btn-accent { background: var(--color-accent); color: #fff; }
-.btn-accent:hover { background: var(--color-accent-dark); color: #fff; }
+
+/* Accent: BRIGHT green + black text — the eye-catching conversion CTA. */
+.btn-accent {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  box-shadow: 0 2px 0 var(--color-accent-dark);
+}
+.btn-accent:hover { background: #14b657; color: var(--color-ink); }
+
+/* Ghost: outlined secondary. */
 .btn-ghost {
   background: transparent;
   color: var(--color-primary);
-  border-color: var(--color-border);
+  border-color: var(--color-primary);
 }
 .btn-ghost:hover { background: var(--color-surface); }
 
