@@ -1,0 +1,86 @@
+---
+/**
+ * /tool — placeholder landing for the Damp & Mould Inspection & Report Generator
+ * (a separate PWA build, per CLAUDE.md §7). This page only describes it and
+ * captures early-access interest via the LeadForm. Do NOT build the tool here.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import LeadForm from "../components/LeadForm.astro";
+import { graph, organizationSchema, personSchema, breadcrumbSchema } from "../lib/schema";
+import type { Crumb } from "../lib/schema";
+
+const title = "Damp & Mould Inspection & Report Tool (Early Access)";
+const description =
+  "A guided mobile inspection tool that generates a professional damp and mould report mapped to HHSRS and Awaab's Law. Join the early-access list.";
+
+const crumbs: Crumb[] = [
+  { label: "Home", href: "/" },
+  { label: "Inspection tool", href: "/tool" },
+];
+const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crumbs));
+---
+
+<BaseLayout title={title} description={description} ogType="website" schema={[schema]}>
+  <div class="container">
+    <article class="measure tool-page">
+      <Breadcrumbs crumbs={crumbs} />
+
+      <p class="kicker">Coming soon</p>
+      <h1>Damp &amp; mould inspection &amp; report tool</h1>
+      <p class="lede">
+        A guided, mobile-first inspection that turns a site visit into a
+        professional report — mapped to <a href="/hhsrs">HHSRS</a> hazards and
+        <a href="/awaabs-law">Awaab's Law</a> timescales — in minutes.
+      </p>
+
+      <h2>What it will do</h2>
+      <ul>
+        <li><strong>Guided inspection</strong> — work room by room, capturing readings, observations and photos.</li>
+        <li><strong>HHSRS-aware</strong> — structured around the hazards that matter, with damp and mould front and centre.</li>
+        <li><strong>Professional report</strong> — auto-generate a clear, evidenced report you can share or rely on.</li>
+        <li><strong>Built for the field</strong> — fast, mobile-first, and designed by a working surveyor.</li>
+      </ul>
+
+      <p class="note">
+        <!-- TODO: the tool is a separate PWA build (subdomain/path) linked from
+             here. Replace this placeholder with the live tool link when ready. -->
+        The tool is in development as a standalone app. Join the early-access
+        list below and we'll let you know the moment it's ready.
+      </p>
+
+      <LeadForm
+        audience="professional"
+        heading="Get early access"
+        intro="Be first to try the inspection tool. We'll only email you about the tool's launch."
+        cta="Join the early-access list"
+      />
+
+      <nav class="related" aria-label="Related guides">
+        <h2>While you wait</h2>
+        <ul>
+          <li><a href="/hhsrs/inspection">HHSRS inspection guide (step by step)</a></li>
+          <li><a href="/damp-mould-survey">Damp and mould survey explained</a></li>
+          <li><a href="/hhsrs">HHSRS explained: the complete guide</a></li>
+        </ul>
+      </nav>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-page { padding-block: var(--space-8) var(--space-12); }
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    margin-bottom: var(--space-2);
+  }
+  .lede { font-size: 1.1875rem; }
+  .note { color: var(--color-muted); }
+  .related { margin-top: var(--space-12); }
+  .related ul { padding-left: 1.25rem; }
+  .related li { margin-bottom: var(--space-2); }
+</style>

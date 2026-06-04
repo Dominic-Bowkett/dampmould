@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Damp & Mould Hub — Awaab's Law, HHSRS and tenant damp and mould help">
+  <!-- TODO (launch): replace with a 1200x630 PNG/JPG for best social-platform
+       support — some networks don't render SVG Open Graph images. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f6e8c"/>
+      <stop offset="1" stop-color="#0a4f66"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- House + droplet mark -->
+  <g transform="translate(96 120)" fill="#ffffff">
+    <path d="M70 0 L140 56 L126 56 L126 132 L14 132 L14 56 L0 56 Z"/>
+    <path d="M70 56c-16 19-25 33-25 45a25 25 0 0 0 50 0c0-12-9-26-25-45z" fill="#1d8a6e"/>
+  </g>
+
+  <!-- Wordmark + tagline -->
+  <text x="96" y="380" font-family="ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#ffffff">Damp &amp; Mould Hub</text>
+  <text x="98" y="448" font-family="ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="38" font-weight="500" fill="#cfe6ee">Awaab&#39;s Law &#183; HHSRS &#183; tenant damp &amp; mould help</text>
+
+  <!-- Author credit strip -->
+  <rect x="96" y="510" width="1008" height="2" fill="#2f8aa6"/>
+  <text x="96" y="566" font-family="ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="30" font-weight="600" fill="#ffffff">Written &amp; reviewed by Dominic Bowkett &#183; CertDEA &#183; MSc &#183; MRPSA</text>
+  <text x="96" y="606" font-family="ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="26" font-weight="500" fill="#cfe6ee">Domestic Energy Assessor &amp; Building Surveyor &#183; England</text>
+</svg>

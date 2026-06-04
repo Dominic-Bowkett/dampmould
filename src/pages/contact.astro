@@ -1,0 +1,73 @@
+---
+/**
+ * /contact — general contact page. Uses the LeadForm for enquiries and explains
+ * what we can and can't help with (we're not a law firm).
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import LeadForm from "../components/LeadForm.astro";
+import { AUTHOR } from "../config";
+import { graph, organizationSchema, personSchema, breadcrumbSchema } from "../lib/schema";
+import type { Crumb } from "../lib/schema";
+
+const title = "Contact";
+const description =
+  "Get in touch with the Damp & Mould Hub — questions, corrections, or enquiries about a survey or training. We're not a law firm and this isn't legal advice.";
+
+const crumbs: Crumb[] = [
+  { label: "Home", href: "/" },
+  { label: "Contact", href: "/contact" },
+];
+const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crumbs));
+---
+
+<BaseLayout title={title} description={description} ogType="website" schema={[schema]}>
+  <div class="container">
+    <article class="measure contact-page">
+      <Breadcrumbs crumbs={crumbs} />
+
+      <h1>Contact</h1>
+      <p class="lede">
+        Questions, a correction to a guide, or an enquiry about a survey or
+        training? Use the form below and we'll get back to you.
+      </p>
+
+      <h2>What we can help with</h2>
+      <ul>
+        <li>Questions about damp, mould, <a href="/hhsrs">HHSRS</a> or <a href="/awaabs-law">Awaab's Law</a>.</li>
+        <li>Enquiries about an independent <a href="/damp-mould-surveyor">damp and mould survey</a>.</li>
+        <li>Interest in <a href="/training-courses">training courses</a> or the <a href="/tool">inspection tool</a>.</li>
+        <li>Corrections or feedback on anything you've read here.</li>
+      </ul>
+
+      <h2>What we can't do</h2>
+      <p>
+        We are <strong>not a law firm</strong> and can't give legal advice on your
+        case. If you need legal help, see
+        <a href="/tenants/find-a-solicitor">how to find a damp and mould solicitor</a>.
+        In an emergency, or where there's a serious and immediate risk to health,
+        contact your landlord and local council straight away.
+      </p>
+
+      <LeadForm
+        audience="landlord"
+        heading="Send us a message"
+        intro="Tell us how we can help and we'll be in touch."
+        cta="Send message"
+      />
+
+      <p class="signoff">
+        Prefer to know who you're talking to first? Read
+        <a href={AUTHOR.aboutUrl}>about {AUTHOR.name}</a>.
+      </p>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact-page { padding-block: var(--space-8) var(--space-12); }
+  .lede { font-size: 1.1875rem; }
+  .contact-page ul { padding-left: 1.25rem; }
+  .contact-page li { margin-bottom: var(--space-2); }
+  .signoff { color: var(--color-muted); margin-top: var(--space-8); }
+</style>

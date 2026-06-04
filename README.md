@@ -57,5 +57,5 @@ images, Lighthouse + schema validation).
 - [x] **6.** Pillar A — Awaab's Law (4 pages)
 - [x] **7.** Pillar B — tenant help (4 pages) + compensation calculator + lead form
 - [x] **8.** Pillar C — HHSRS hub + surveyor/specialist/survey/careers/courses (8 pages)
-- [ ] 9. /tool, /privacy, /contact, OG images
+- [x] **9.** /tool, /privacy, /contact + OG image (no broken internal links; 21 pages)
 - [ ] 10. Lighthouse + schema validation pass

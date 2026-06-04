@@ -9,8 +9,9 @@ export const SITE = {
   // Short tagline used in header/footer and default meta.
   tagline: "Awaab's Law, HHSRS & tenant damp-and-mould help — England",
   url: "https://REPLACE_DOMAIN",
-  // Default social/OG image (place a real 1200x630 image here before launch).
-  defaultOgImage: "/images/og-default.png",
+  // Default social/OG image. SVG placeholder for now — replace with a
+  // 1200x630 PNG/JPG before launch for full social-platform support.
+  defaultOgImage: "/images/og-default.svg",
   locale: "en_GB",
 };
 
