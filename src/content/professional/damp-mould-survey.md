@@ -1,5 +1,5 @@
 ---
-title: "Damp & Mould Survey Explained"
+title: "Damp and Mould Survey Explained"
 description: "What a damp and mould survey involves, the different types of damp, what the report should tell you, and how a proper survey gets the cause right the first time."
 pillar: "c"
 audience: "landlord"

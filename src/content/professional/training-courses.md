@@ -1,6 +1,6 @@
 ---
-title: "Damp & Mould Training Courses"
-description: "Practitioner-led damp, mould, HHSRS and Awaab's Law training courses for landlords, housing professionals and career-changers — what to look for and how to choose."
+title: "Damp and Mould Training Courses"
+description: "Practitioner-led damp and mould training courses covering HHSRS and Awaab's Law, for landlords, housing professionals and career-changers — what to look for and how to choose."
 pillar: "c"
 audience: "professional"
 targetKeyword: "damp and mould training courses"

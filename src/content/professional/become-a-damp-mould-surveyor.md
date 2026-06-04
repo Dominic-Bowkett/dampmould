@@ -1,6 +1,6 @@
 ---
-title: "How to Become a Damp & Mould Surveyor"
-description: "A practical route into damp and mould surveying — the skills and qualifications that help, how to build experience, and why Awaab's Law has made it a growing career."
+title: "How to Become a Damp and Mould Surveyor"
+description: "How to become a damp and mould surveyor: the skills and qualifications that help, how to build experience, damp surveyor jobs, and why Awaab's Law has made it a growing career."
 pillar: "c"
 audience: "professional"
 targetKeyword: "damp and mould surveyor jobs"

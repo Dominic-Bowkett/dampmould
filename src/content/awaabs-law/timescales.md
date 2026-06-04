@@ -1,6 +1,6 @@
 ---
 title: "Awaab's Law Timescales & Deadlines Explained"
-description: "The deadlines at the heart of Awaab's Law in England — investigation periods, written summaries, repair start times and emergency response — explained in plain English for tenants and landlords."
+description: "Awaab's Law timescales explained: the deadlines for investigating damp and mould, the written summary, starting repairs, and the emergency response — in plain English."
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law timescales"

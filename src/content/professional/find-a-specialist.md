@@ -1,6 +1,6 @@
 ---
-title: "Find a Damp & Mould Specialist Near You"
-description: "How to find a genuinely independent damp and mould specialist near you — what qualifications and credentials to look for, the questions to ask, and how to avoid 'free survey' sales traps."
+title: "Find a Damp and Mould Specialist Near You"
+description: "How to find a damp and mould specialist near you — what qualifications to look for, the questions to ask, and how to avoid 'free survey' sales traps. Independent help."
 pillar: "c"
 audience: "landlord"
 targetKeyword: "damp and mould specialist near me"

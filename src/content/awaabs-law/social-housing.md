@@ -1,6 +1,6 @@
 ---
 title: "Awaab's Law for Social Housing Landlords"
-description: "A practitioner's guide to Awaab's Law for social landlords in England — the duties, timescales, regulatory expectations and the systems councils and housing associations need to comply."
+description: "Awaab's Law for social housing landlords in England: the duties, timescales, regulatory expectations and the systems councils and housing associations need to comply."
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law social housing"

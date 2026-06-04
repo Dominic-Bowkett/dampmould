@@ -1,6 +1,6 @@
 ---
-title: "Damp & Mould: Your Rights as a Tenant (UK)"
-description: "A clear, calm guide to your rights if you have damp or mould in a rented home in England — what your landlord must do, how to report it, and the steps to take if they don't act."
+title: "Tenants' Rights on Damp and Mould (UK)"
+description: "Your tenants' rights on damp and mould in the UK: what your landlord must do, how to report it, whether it's your fault, and the steps to take if they don't act. Plain-English."
 pillar: "b"
 audience: "tenant"
 targetKeyword: "tenants' rights damp and mould uk"
@@ -18,12 +18,17 @@ faqs:
     answer: "<p>Landlords must act within a reasonable time, and under <a href=\"/awaabs-law\">Awaab's Law</a> social landlords (and, increasingly, private landlords) face fixed deadlines to investigate and repair reported hazards. <!-- TODO: confirm timescales/applicability. --></p>"
   - question: "Do I have to keep paying rent if there's damp and mould?"
     answer: "<p>Yes — keep paying your rent. Withholding rent can put you at risk of eviction and rarely helps your case. The right route is to report the problem, keep records, and pursue the proper remedies, including a possible compensation claim. See <a href=\"/tenants/how-to-claim\">how to claim</a>.</p>"
+  - question: "I have damp in my house — who do I call?"
+    answer: "<p>If you rent, tell your landlord or letting agent first, in writing. If they don't act, contact your local council's environmental health team, who can inspect under <a href=\"/hhsrs\">HHSRS</a>. For a dispute or claim, speak to a <a href=\"/tenants/find-a-solicitor\">housing disrepair solicitor</a>. If you own your home, an independent <a href=\"/damp-mould-surveyor\">damp and mould surveyor</a> can diagnose the cause.</p>"
+  - question: "Does house insurance cover damp and rising damp?"
+    answer: "<p>Usually not. Most home insurance treats damp, rising damp and condensation as maintenance issues rather than sudden insured events, so gradual damage is typically excluded — though a one-off escape of water (a burst pipe) may be covered. Check your policy wording. <!-- TODO: Dom verify — general guidance only, not insurance advice. --></p>"
 ---
 
-If you're dealing with damp or mould in a rented home, it's easy to feel stuck —
+If you're dealing with damp and mould in a rented home, it's easy to feel stuck —
 worried about your health, your belongings, and whether complaining could put
-your tenancy at risk. Take a breath: **you have real, enforceable rights**, and
-this guide explains them in plain English, along with exactly what to do.
+your tenancy at risk. Take a breath: as a tenant you have real, enforceable
+**rights on damp and mould**, and this guide explains them in plain English,
+along with exactly what to do.
 
 > **This is general information for England, not legal advice.** Rules differ in
 > Scotland and Wales. For your situation, get advice from a qualified solicitor.
