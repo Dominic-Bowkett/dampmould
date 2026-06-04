@@ -6,7 +6,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import LeadForm from "../components/LeadForm.astro";
-import { AUTHOR } from "../config";
+import { AUTHOR, SITE } from "../config";
 import { graph, organizationSchema, personSchema, breadcrumbSchema } from "../lib/schema";
 import type { Crumb } from "../lib/schema";
 
@@ -52,9 +52,15 @@ const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crum
       <LeadForm
         audience="landlord"
         heading="Send us a message"
-        intro="Tell us how we can help and we'll be in touch."
+        intro="Fill in the form and press send — your email app opens with everything ready to go."
         cta="Send message"
+        subject="Contact form — Damp & Mould Hub"
       />
+
+      <p class="direct-email">
+        Prefer to email directly? Write to
+        <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+      </p>
 
       <p class="signoff">
         Prefer to know who you're talking to first? Read
@@ -69,5 +75,6 @@ const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crum
   .lede { font-size: 1.1875rem; }
   .contact-page ul { padding-left: 1.25rem; }
   .contact-page li { margin-bottom: var(--space-2); }
+  .direct-email { color: var(--color-muted); font-size: 0.9375rem; margin-top: var(--space-4); }
   .signoff { color: var(--color-muted); margin-top: var(--space-8); }
 </style>

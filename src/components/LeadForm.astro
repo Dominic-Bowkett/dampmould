@@ -1,28 +1,40 @@
 ---
 /**
- * LeadForm — email/referral capture. Posts to the Cloudflare Pages Function at
- * /api/lead (see /functions/api/lead.js). Progressive enhancement: it's a real
- * <form> that works without JS (full page POST), and a small island upgrades it
- * to fetch + inline success/error messaging.
+ * LeadForm — enquiry / lead capture. Two modes:
  *
- * Honeypot field "company" is hidden from humans; bots that fill it are dropped
- * server-side. No API keys client-side — the Function holds those.
+ *  - mode="email" (DEFAULT): builds a pre-filled email from the entered values
+ *    and opens the visitor's own email client (mailto:), ready for them to send.
+ *    No backend required. Works as a plain mailto form even without JS; JS just
+ *    formats the message nicely.
+ *  - mode="post": submits to the Cloudflare Pages Function /api/lead (stub) for
+ *    when a server-side email/CRM endpoint is wired up later.
+ *
+ * Honeypot field "company" is hidden from humans and dropped if filled.
  */
+import { SITE } from "../config";
+
 interface Props {
-  /** Routes the lead + tailors copy. */
+  /** Tailors copy + appears in the email so you know which form it came from. */
   audience?: "tenant" | "landlord" | "professional";
   heading?: string;
   intro?: string;
   cta?: string;
+  /** "email" = mailto (default), "post" = serverless /api/lead. */
+  mode?: "email" | "post";
+  /** Email subject line (email mode). */
+  subject?: string;
 }
 const {
   audience = "tenant",
   heading = "Get help with your damp & mould issue",
   intro = "Tell us a little about your situation and we'll point you in the right direction.",
   cta = "Send",
+  mode = "email",
+  subject = "Website enquiry — Damp & Mould Hub",
 } = Astro.props;
 
 const formId = `lead-${Math.random().toString(36).slice(2, 8)}`;
+const action = mode === "email" ? `mailto:${SITE.contactEmail}` : "/api/lead";
 ---
 
 <section class="lead-form card" aria-labelledby={`${formId}-h`}>
@@ -33,8 +45,12 @@ const formId = `lead-${Math.random().toString(36).slice(2, 8)}`;
     id={formId}
     class="lead"
     method="post"
-    action="/api/lead"
+    action={action}
+    enctype={mode === "email" ? "text/plain" : undefined}
     data-lead-form
+    data-mode={mode}
+    data-email={SITE.contactEmail}
+    data-subject={subject}
   >
     <input type="hidden" name="audience" value={audience} />
 
@@ -49,7 +65,7 @@ const formId = `lead-${Math.random().toString(36).slice(2, 8)}`;
     </div>
 
     <div class="field">
-      <label for={`${formId}-email`}>Email</label>
+      <label for={`${formId}-email`}>Your email</label>
       <input id={`${formId}-email`} name="email" type="email" required autocomplete="email" />
     </div>
 
@@ -67,41 +83,96 @@ const formId = `lead-${Math.random().toString(36).slice(2, 8)}`;
 
     <p class="lead-status" data-lead-status role="status" aria-live="polite" hidden></p>
     <p class="lead-privacy">
-      We use your details only to respond to your enquiry. See our
-      <a href="/privacy">privacy notice</a>.
+      {mode === "email"
+        ? "Clicking ‘Send’ opens your own email app with the details filled in — you stay in control and just press send."
+        : "We use your details only to respond to your enquiry."}
+      See our <a href="/privacy">privacy notice</a>.
     </p>
   </form>
 </section>
 
 <script is:inline>
-  // Enhance lead forms: submit via fetch, show inline status, no page reload.
   (function () {
     document.querySelectorAll("[data-lead-form]").forEach(function (form) {
       var status = form.querySelector("[data-lead-status]");
+      var mode = form.getAttribute("data-mode") || "email";
+
+      function showStatus(msg, kind) {
+        if (!status) return;
+        status.hidden = false;
+        status.textContent = msg;
+        status.classList.remove("ok", "err");
+        if (kind) status.classList.add(kind);
+      }
+
+      function fields() {
+        var f = new FormData(form);
+        return {
+          company: (f.get("company") || "").toString(),
+          name: (f.get("name") || "").toString().trim(),
+          email: (f.get("email") || "").toString().trim(),
+          postcode: (f.get("postcode") || "").toString().trim(),
+          situation: (f.get("situation") || "").toString().trim(),
+          audience: (f.get("audience") || "").toString(),
+        };
+      }
+
       form.addEventListener("submit", async function (e) {
+        var d = fields();
+        // Honeypot — silently stop bots.
+        if (d.company) { e.preventDefault(); return; }
+
+        if (mode === "email") {
+          // Build a pre-filled email and open the visitor's own mail client.
+          e.preventDefault();
+          if (!d.name || !d.email) {
+            showStatus("Please add your name and email first.", "err");
+            return;
+          }
+          var to = form.getAttribute("data-email");
+          var subject = form.getAttribute("data-subject") || "Website enquiry";
+          var lines = [
+            "Name: " + d.name,
+            "Email: " + d.email,
+            "Postcode: " + (d.postcode || "—"),
+            "Enquiry type: " + (d.audience || "—"),
+            "",
+            "Message:",
+            d.situation || "—",
+          ];
+          var href =
+            "mailto:" + to +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(lines.join("\r\n"));
+          window.location.href = href;
+          showStatus(
+            "Opening your email app… If nothing happens, email us at " + to + ".",
+            "ok"
+          );
+          return;
+        }
+
+        // mode === "post": serverless submit via fetch.
         e.preventDefault();
         var btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
-        if (status) { status.hidden = false; status.textContent = "Sending…"; }
+        showStatus("Sending…");
         try {
           var res = await fetch(form.action, {
             method: "POST",
             headers: { "content-type": "application/json", accept: "application/json" },
-            body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+            body: JSON.stringify(d),
           });
-          var data = await res.json().catch(function () { return {}; });
-          if (res.ok && data.ok) {
+          var j = await res.json().catch(function () { return {}; });
+          if (res.ok && j.ok) {
             form.reset();
-            if (status) status.textContent = data.message || "Thanks — we’ll be in touch.";
-            status && status.classList.add("ok");
+            showStatus(j.message || "Thanks — we’ll be in touch.", "ok");
           } else {
-            if (status) status.textContent = (data && data.error) || "Something went wrong. Please try again.";
-            status && status.classList.add("err");
+            showStatus(j.error || "Something went wrong. Please try again.", "err");
             btn.disabled = false;
           }
         } catch (err) {
-          if (status) status.textContent = "Network error. Please try again.";
-          status && status.classList.add("err");
+          showStatus("Network error. Please try again.", "err");
           btn.disabled = false;
         }
       });

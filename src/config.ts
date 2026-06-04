@@ -13,6 +13,11 @@ export const SITE = {
   // 1200x630 PNG/JPG before launch for full social-platform support.
   defaultOgImage: "/images/og-default.svg",
   locale: "en_GB",
+  // Where the contact / enquiry forms address their email (mailto: approach).
+  // TODO: set this to the real inbox before launch. A dedicated address (e.g.
+  // hello@yourdomain) is better than a personal one — a mailto address is
+  // visible in the page source and can attract spam.
+  contactEmail: "hello@REPLACE_DOMAIN",
 };
 
 /**
