@@ -1,0 +1,54 @@
+---
+/**
+ * Breadcrumbs — visible trail. The matching BreadcrumbList JSON-LD is emitted
+ * by the layout (via schema helpers) so markup and structured data stay aligned.
+ */
+import type { Crumb } from "../lib/schema";
+
+interface Props {
+  crumbs: Crumb[];
+}
+const { crumbs } = Astro.props;
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {
+      crumbs.map((c, i) => (
+        <li>
+          {i < crumbs.length - 1 ? (
+            <a href={c.href}>{c.label}</a>
+          ) : (
+            <span aria-current="page">{c.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0 0 var(--space-6);
+    padding: 0;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+  .breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+  /* Separator between crumbs. */
+  .breadcrumbs li + li::before {
+    content: "/";
+    color: var(--color-border);
+  }
+  .breadcrumbs a { color: var(--color-muted); text-decoration: none; }
+  .breadcrumbs a:hover { color: var(--color-primary); text-decoration: underline; }
+  .breadcrumbs [aria-current="page"] { color: var(--color-ink); }
+</style>

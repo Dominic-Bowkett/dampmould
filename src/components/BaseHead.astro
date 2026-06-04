@@ -1,0 +1,93 @@
+---
+/**
+ * BaseHead — all <head> meta for a page: title, description, canonical,
+ * Open Graph + Twitter cards, favicon, global styles, JSON-LD schema, and
+ * analytics placeholders. Every page flows through here via BaseLayout.
+ */
+import { SITE } from "../config";
+import "../styles/tokens.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path or absolute URL for the canonical. Defaults to current request URL. */
+  canonical?: string;
+  /** OG image path/URL. Falls back to the site default. */
+  ogImage?: string;
+  /** Page type for OG — "website" for landing pages, "article" for content. */
+  ogType?: "website" | "article";
+  /** Array of JSON-LD objects (use helpers in src/lib/schema.ts). */
+  schema?: Array<Record<string, unknown>>;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = SITE.defaultOgImage,
+  ogType = "website",
+  schema = [],
+} = Astro.props;
+
+const siteBase = SITE.url.replace(/\/$/, "");
+// Build canonical from the current path unless one is explicitly passed.
+// Concatenate (don't use `new URL`) so the REPLACE_DOMAIN placeholder keeps its
+// exact casing for a clean find-and-replace before launch.
+const canonicalUrl = canonical
+  ? (/^https?:\/\//.test(canonical) ? canonical : `${siteBase}${canonical}`)
+  : `${siteBase}${Astro.url.pathname}`;
+
+const ogImageUrl = /^https?:\/\//.test(ogImage) ? ogImage : `${siteBase}${ogImage}`;
+
+// Title pattern: page title + brand, unless the page already is the brand.
+const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- TODO: Search Console verification — add real token before launch.
+<meta name="google-site-verification" content="REPLACE_SEARCH_CONSOLE_TOKEN" /> -->
+
+<!-- JSON-LD structured data -->
+{
+  schema.map((node) => (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(node)}
+    />
+  ))
+}
+
+<!-- TODO: Google Analytics 4 — add real measurement ID before launch.
+<script async src="https://www.googletagmanager.com/gtag/js?id=REPLACE_GA4_ID"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'REPLACE_GA4_ID');
+</script>
+-->

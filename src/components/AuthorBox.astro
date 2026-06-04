@@ -1,0 +1,69 @@
+---
+/**
+ * AuthorBox — Dom's credentials block. Appears on every article (E-E-A-T).
+ * Person schema is emitted centrally (ArticleLayout) so it isn't duplicated;
+ * this component is the visible trust signal.
+ */
+import { AUTHOR } from "../config";
+---
+
+<aside class="author-box" aria-label={`About the author, ${AUTHOR.name}`}>
+  <img
+    class="author-photo"
+    src={AUTHOR.photo}
+    alt={`${AUTHOR.name}, ${AUTHOR.jobTitle}`}
+    width="72"
+    height="72"
+    loading="lazy"
+    decoding="async"
+  />
+  <div class="author-body">
+    <p class="author-byline">
+      Written by <strong>{AUTHOR.name}</strong>,
+      <span class="author-creds">{AUTHOR.credentials.join(" · ")}</span>
+    </p>
+    <p class="author-role">{AUTHOR.jobTitle}</p>
+    <p class="author-bio">{AUTHOR.bioShort}</p>
+    <p class="author-link">
+      <a href={AUTHOR.aboutUrl}>More about {AUTHOR.name.split(" ")[0]} →</a>
+    </p>
+  </div>
+</aside>
+
+<style>
+  .author-box {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    margin-block: var(--space-12);
+  }
+  .author-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+    background: var(--color-border);
+  }
+  .author-body p { margin: 0 0 var(--space-2); }
+  .author-byline { font-size: 1rem; }
+  .author-creds { color: var(--color-muted); }
+  .author-role {
+    font-size: 0.9375rem;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+  .author-bio {
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+  }
+  .author-link a { font-weight: 600; }
+
+  @media (max-width: 519px) {
+    .author-box { flex-direction: column; }
+  }
+</style>

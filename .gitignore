@@ -1,0 +1,25 @@
+# build output
+dist/
+.output/
+
+# dependencies
+node_modules/
+
+# astro
+.astro/
+
+# cloudflare / wrangler
+.wrangler/
+
+# env & secrets (never commit lead/CRM keys)
+.env
+.env.production
+.dev.vars
+
+# logs
+npm-debug.log*
+*.log
+
+# os / editor
+.DS_Store
+.vscode/

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# REPLACE_DOMAIN: update host before launch.
+Sitemap: https://REPLACE_DOMAIN/sitemap-index.xml

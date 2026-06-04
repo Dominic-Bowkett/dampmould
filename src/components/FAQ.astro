@@ -1,0 +1,62 @@
+---
+/**
+ * FAQ — renders an accessible Q&A list using native <details>/<summary>.
+ * Does NOT emit schema itself: the layout collects faqs frontmatter and emits a
+ * single FAQPage node (avoids duplicate JSON-LD). Answers support inline HTML.
+ */
+import type { FaqItem } from "../lib/schema";
+
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+}
+const { items, heading = "Frequently asked questions" } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">{heading}</h2>
+      <div class="faq-list">
+        {items.map((item) => (
+          <details class="faq-item">
+            <summary>{item.question}</summary>
+            <div class="faq-answer" set:html={item.answer} />
+          </details>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    margin-bottom: var(--space-3);
+    background: var(--color-bg);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: var(--space-4);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    align-items: center;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    flex: none;
+  }
+  .faq-item[open] summary::after { content: "–"; }
+  .faq-answer {
+    padding: 0 var(--space-4) var(--space-4);
+    color: var(--color-ink);
+  }
+  .faq-answer :global(p:last-child) { margin-bottom: 0; }
+</style>

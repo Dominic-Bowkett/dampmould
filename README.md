@@ -1,0 +1,61 @@
+# Damp & Mould / Awaab's Law Compliance Hub
+
+Static **Astro** content site for the UK damp & mould / Awaab's Law niche,
+deployed to **Cloudflare Pages**. See [`CLAUDE.md`](./CLAUDE.md) for the full
+project brief (the source of truth) and [`docs/`](./docs) for strategy notes.
+
+## Stack
+
+- **Astro** (static output, zero JS by default) + **MDX** content + **sitemap**
+- Plain CSS with design tokens (`src/styles/tokens.css`)
+- **Cloudflare Pages Functions** for serverless lead capture (`functions/api/lead.js`)
+- JSON-LD schema helpers in `src/lib/schema.ts`
+
+## Develop
+
+```bash
+npm install
+npm run dev      # local dev server
+npm run build    # static build → dist/
+npm run preview  # preview the built site
+npx astro check  # type-check
+```
+
+## Project layout
+
+```
+functions/api/lead.js      Serverless lead/referral handler (stub — wire endpoint before launch)
+src/components/            BaseHead, Header, Footer, AuthorBox, Breadcrumbs, FAQ,
+                           LeadForm, CompensationCalculator (stub), Schema
+src/layouts/              BaseLayout, ArticleLayout
+src/content/              Content Collections (config.ts + awaabs-law / tenants / professional)
+src/pages/                index.astro (placeholder), [...slug].astro (renders collections)
+src/lib/schema.ts         JSON-LD builders (Article, Person, FAQ, HowTo, Breadcrumb)
+src/config.ts             Site name, author E-E-A-T data, nav, footer links
+```
+
+## Deploy (Cloudflare Pages)
+
+Connect the Git repo to Cloudflare Pages:
+
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- Functions in `/functions` deploy automatically.
+
+## Before launch
+
+`REPLACE_DOMAIN` is used as the domain placeholder throughout (canonicals,
+sitemap, robots, schema). Find-and-replace it with the real domain, then work
+through the pre-launch checklist in `CLAUDE.md` §11 (GA4 ID, Search Console
+token, lead endpoint secrets, solicitor referral partner, author photo + OG
+images, Lighthouse + schema validation).
+
+## Build progress
+
+- [x] **1–4.** Scaffold, config, base layout, components, content schema
+- [ ] 5. Home + About
+- [ ] 6. Pillar A — Awaab's Law
+- [ ] 7. Pillar B + compensation calculator + lead form
+- [ ] 8. Pillar C — HHSRS hub et al.
+- [ ] 9. /tool, /privacy, /contact, OG images
+- [ ] 10. Lighthouse + schema validation pass

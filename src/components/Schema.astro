@@ -1,0 +1,16 @@
+---
+/**
+ * Schema — renders an array of JSON-LD objects as <script type="application/ld+json">.
+ *
+ * The builder functions (articleSchema, faqSchema, howToSchema, breadcrumbSchema,
+ * personSchema, graph, …) live in src/lib/schema.ts. Most pages pass schema
+ * through BaseHead's `schema` prop; use this component only when you need to
+ * drop structured data directly into a page body/section instead.
+ */
+interface Props {
+  nodes: Array<Record<string, unknown>>;
+}
+const { nodes } = Astro.props;
+---
+
+{nodes.map((node) => <script is:inline type="application/ld+json" set:html={JSON.stringify(node)} />)}

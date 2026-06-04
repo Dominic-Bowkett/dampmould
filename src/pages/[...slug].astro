@@ -1,0 +1,106 @@
+---
+/**
+ * Catch-all route that renders every content-collection entry through
+ * ArticleLayout. URL = collection base path + entry slug. Named .astro pages
+ * (/, /about, /privacy, …) take precedence over this rest route.
+ *
+ * Note: until content is authored (build steps 6–8) the collections are empty,
+ * so this generates no pages yet — that's expected.
+ */
+import { getCollection, type CollectionEntry } from "astro:content";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import { NAV } from "../config";
+import type { Crumb } from "../lib/schema";
+
+type Collection = "awaabs-law" | "tenants" | "professional";
+
+// Where each collection mounts in the URL tree (professional pages sit at root).
+const BASE: Record<Collection, string> = {
+  "awaabs-law": "/awaabs-law",
+  tenants: "/tenants",
+  professional: "",
+};
+
+// Human label for each pillar's top-level breadcrumb.
+const PILLAR_LABEL: Record<Collection, string> = {
+  "awaabs-law": "Awaab's Law",
+  tenants: "Tenant help",
+  professional: "Landlords & professionals",
+};
+
+/** Build the public URL for an entry from its collection + slug. */
+function urlFor(collection: Collection, slug: string): string {
+  // An "index" slug represents the collection's landing page.
+  const clean = slug.replace(/(^|\/)index$/, "");
+  const path = `${BASE[collection]}/${clean}`.replace(/\/+/g, "/").replace(/\/$/, "");
+  return path === "" ? "/" : path;
+}
+
+export async function getStaticPaths() {
+  const collections: Collection[] = ["awaabs-law", "tenants", "professional"];
+  const all = (
+    await Promise.all(
+      collections.map(async (c) => {
+        const entries = await getCollection(c, ({ data }) => !data.draft);
+        return entries.map((entry) => ({ collection: c, entry }));
+      }),
+    )
+  ).flat();
+
+  return all.map(({ collection, entry }) => {
+    const url = urlFor(collection, entry.slug);
+    // Related links = sibling entries in the same collection.
+    const related = all
+      .filter((o) => o.collection === collection && o.entry.slug !== entry.slug)
+      .slice(0, 4)
+      .map((o) => ({
+        label: o.entry.data.title,
+        href: urlFor(o.collection, o.entry.slug),
+      }));
+
+    return {
+      // params.slug is the URL minus the leading slash.
+      params: { slug: url.replace(/^\//, "") },
+      props: { collection, entry, related },
+    };
+  });
+}
+
+interface Props {
+  collection: Collection;
+  entry: CollectionEntry<Collection>;
+  related: { label: string; href: string }[];
+}
+
+const { collection, entry, related } = Astro.props as Props;
+const { Content } = await entry.render();
+const data = entry.data;
+
+const selfUrl = urlFor(collection, entry.slug);
+const isPillarLanding = selfUrl === BASE[collection] || selfUrl === `${BASE[collection]}`;
+
+// Breadcrumb trail: Home → Pillar → (this page, unless it IS the pillar page).
+const crumbs: Crumb[] = [{ label: "Home", href: "/" }];
+const pillarHref = BASE[collection] || (NAV.find((n) => n.label === "HHSRS")?.href ?? "/");
+if (!isPillarLanding) {
+  crumbs.push({ label: PILLAR_LABEL[collection], href: pillarHref || "/" });
+}
+crumbs.push({ label: data.title, href: selfUrl });
+---
+
+<ArticleLayout
+  title={data.title}
+  description={data.description}
+  pillar={data.pillar}
+  audience={data.audience}
+  lastReviewed={data.lastReviewed}
+  datePublished={data.datePublished}
+  cta={data.cta}
+  faqs={data.faqs}
+  howToSteps={data.howToSteps}
+  ogImage={data.ogImage}
+  crumbs={crumbs}
+  relatedLinks={related}
+>
+  <Content />
+</ArticleLayout>

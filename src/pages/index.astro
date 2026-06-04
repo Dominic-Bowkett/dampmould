@@ -1,0 +1,52 @@
+---
+/**
+ * PLACEHOLDER HOME — scaffold only.
+ * The real audience-routing homepage is build-order step 5. This holding page
+ * exists so the project builds and the base layout/header/footer/tokens can be
+ * reviewed. Replace its body in step 5.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE, AUTHOR } from "../config";
+---
+
+<BaseLayout
+  title={SITE.name}
+  description={SITE.tagline}
+  ogType="website"
+>
+  <section class="hero">
+    <div class="container measure">
+      <p class="kicker">Scaffold preview</p>
+      <h1>{SITE.name}</h1>
+      <p class="lede">{SITE.tagline}</p>
+      <p class="note">
+        This is a placeholder home page used to review the base layout,
+        components and design tokens. Real page content (home, about and the
+        three content pillars) is written in later build steps.
+      </p>
+      <p class="byline">
+        Authored by {AUTHOR.name} — {AUTHOR.credentials.join(" · ")}
+      </p>
+      <p class="actions">
+        <a class="btn btn-primary" href="/about">About the author</a>
+        <a class="btn btn-ghost" href="/awaabs-law">Awaab's Law guide</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding-block: var(--space-16); }
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--space-2);
+  }
+  .lede { font-size: 1.25rem; color: var(--color-ink); }
+  .note { color: var(--color-muted); }
+  .byline { color: var(--color-muted); font-size: 0.9375rem; }
+  .actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-6); }
+</style>

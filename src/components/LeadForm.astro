@@ -1,0 +1,142 @@
+---
+/**
+ * LeadForm — email/referral capture. Posts to the Cloudflare Pages Function at
+ * /api/lead (see /functions/api/lead.js). Progressive enhancement: it's a real
+ * <form> that works without JS (full page POST), and a small island upgrades it
+ * to fetch + inline success/error messaging.
+ *
+ * Honeypot field "company" is hidden from humans; bots that fill it are dropped
+ * server-side. No API keys client-side — the Function holds those.
+ */
+interface Props {
+  /** Routes the lead + tailors copy. */
+  audience?: "tenant" | "landlord" | "professional";
+  heading?: string;
+  intro?: string;
+  cta?: string;
+}
+const {
+  audience = "tenant",
+  heading = "Get help with your damp & mould issue",
+  intro = "Tell us a little about your situation and we'll point you in the right direction.",
+  cta = "Send",
+} = Astro.props;
+
+const formId = `lead-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<section class="lead-form card" aria-labelledby={`${formId}-h`}>
+  <h2 id={`${formId}-h`} class="lead-heading">{heading}</h2>
+  <p class="lead-intro">{intro}</p>
+
+  <form
+    id={formId}
+    class="lead"
+    method="post"
+    action="/api/lead"
+    data-lead-form
+  >
+    <input type="hidden" name="audience" value={audience} />
+
+    <!-- Honeypot: visually hidden + aria-hidden; real users never see it. -->
+    <div class="hp" aria-hidden="true">
+      <label>Company<input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+    </div>
+
+    <div class="field">
+      <label for={`${formId}-name`}>Your name</label>
+      <input id={`${formId}-name`} name="name" type="text" required autocomplete="name" />
+    </div>
+
+    <div class="field">
+      <label for={`${formId}-email`}>Email</label>
+      <input id={`${formId}-email`} name="email" type="email" required autocomplete="email" />
+    </div>
+
+    <div class="field">
+      <label for={`${formId}-postcode`}>Postcode <span class="opt">(optional)</span></label>
+      <input id={`${formId}-postcode`} name="postcode" type="text" autocomplete="postal-code" />
+    </div>
+
+    <div class="field">
+      <label for={`${formId}-situation`}>Your situation <span class="opt">(optional)</span></label>
+      <textarea id={`${formId}-situation`} name="situation" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-accent">{cta}</button>
+
+    <p class="lead-status" data-lead-status role="status" aria-live="polite" hidden></p>
+    <p class="lead-privacy">
+      We use your details only to respond to your enquiry. See our
+      <a href="/privacy">privacy notice</a>.
+    </p>
+  </form>
+</section>
+
+<script is:inline>
+  // Enhance lead forms: submit via fetch, show inline status, no page reload.
+  (function () {
+    document.querySelectorAll("[data-lead-form]").forEach(function (form) {
+      var status = form.querySelector("[data-lead-status]");
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        if (status) { status.hidden = false; status.textContent = "Sending…"; }
+        try {
+          var res = await fetch(form.action, {
+            method: "POST",
+            headers: { "content-type": "application/json", accept: "application/json" },
+            body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+          });
+          var data = await res.json().catch(function () { return {}; });
+          if (res.ok && data.ok) {
+            form.reset();
+            if (status) status.textContent = data.message || "Thanks — we’ll be in touch.";
+            status && status.classList.add("ok");
+          } else {
+            if (status) status.textContent = (data && data.error) || "Something went wrong. Please try again.";
+            status && status.classList.add("err");
+            btn.disabled = false;
+          }
+        } catch (err) {
+          if (status) status.textContent = "Network error. Please try again.";
+          status && status.classList.add("err");
+          btn.disabled = false;
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .lead-form { margin-block: var(--space-12); }
+  .lead-heading { margin-top: 0; font-size: 1.375rem; }
+  .lead-intro { color: var(--color-muted); }
+  .field { margin-bottom: var(--space-4); }
+  .field label { display: block; font-weight: 600; margin-bottom: var(--space-1); }
+  .opt { font-weight: 400; color: var(--color-muted); }
+  .field input,
+  .field textarea {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font: inherit;
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+  .field input:focus,
+  .field textarea:focus { border-color: var(--color-primary); }
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .lead-status { margin-top: var(--space-4); font-weight: 600; }
+  .lead-status.ok { color: var(--color-accent-dark); }
+  .lead-status.err { color: var(--color-warn); }
+  .lead-privacy { font-size: 0.8125rem; color: var(--color-muted); margin-top: var(--space-4); }
+</style>

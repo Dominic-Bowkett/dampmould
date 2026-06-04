@@ -1,0 +1,218 @@
+---
+/**
+ * ArticleLayout — the wrapper for every content-collection page. Renders the
+ * H1 + last-reviewed date, breadcrumbs, the MDX body (default slot), an optional
+ * FAQ block, the AuthorBox, a related-links block, and a contextual CTA chosen
+ * by the `cta` frontmatter field. Emits the full schema graph (Article, Person,
+ * Organization, Breadcrumb, + optional FAQPage / HowTo).
+ */
+import BaseLayout from "./BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import AuthorBox from "../components/AuthorBox.astro";
+import FAQ from "../components/FAQ.astro";
+import LeadForm from "../components/LeadForm.astro";
+import type { Crumb, FaqItem, HowToStep } from "../lib/schema";
+import {
+  graph,
+  articleSchema,
+  personSchema,
+  organizationSchema,
+  breadcrumbSchema,
+  faqSchema,
+  howToSchema,
+} from "../lib/schema";
+
+interface RelatedLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  pillar: "a" | "b" | "c";
+  audience: "tenant" | "landlord" | "professional";
+  lastReviewed: Date;
+  datePublished?: Date;
+  cta?: "referral" | "course" | "service" | "tool";
+  faqs?: FaqItem[];
+  howToSteps?: HowToStep[];
+  ogImage?: string;
+  /** Breadcrumb trail (caller supplies; always starts at Home). */
+  crumbs: Crumb[];
+  /** Internal related links (sibling/pillar pages). */
+  relatedLinks?: RelatedLink[];
+}
+
+const {
+  title,
+  description,
+  lastReviewed,
+  datePublished,
+  cta = "referral",
+  audience,
+  faqs = [],
+  howToSteps = [],
+  ogImage,
+  crumbs,
+  relatedLinks = [],
+} = Astro.props;
+
+const path = Astro.url.pathname;
+
+// Human-readable, machine-readable dates.
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+const reviewedISO = lastReviewed.toISOString();
+const publishedISO = (datePublished ?? lastReviewed).toISOString();
+
+// Build the structured-data graph for this article.
+const schemaGraph = graph(
+  organizationSchema(),
+  personSchema(),
+  articleSchema({
+    title,
+    description,
+    url: path,
+    datePublished: publishedISO,
+    dateModified: reviewedISO,
+    image: ogImage,
+  }),
+  breadcrumbSchema(crumbs),
+  faqs.length ? faqSchema(faqs) : null,
+  howToSteps.length ? howToSchema(title, howToSteps) : null,
+);
+
+// Contextual CTA config — keyed off the `cta` frontmatter field.
+// TODO: course/service/tool destinations are placeholders until Dom confirms
+//       course platform URLs and service pages are live.
+const CTAS = {
+  course: {
+    heading: "Train with a practitioner",
+    body: "CPD-accredited damp, mould and HHSRS courses authored by a working surveyor.",
+    label: "View training courses",
+    href: "/training-courses",
+  },
+  service: {
+    heading: "Need a professional damp & mould survey?",
+    body: "Independent, HHSRS-based inspection and reporting from a qualified surveyor.",
+    label: "About damp & mould surveys",
+    href: "/damp-mould-surveyor",
+  },
+  tool: {
+    heading: "Inspect and report in minutes",
+    body: "Our guided inspection tool generates an HHSRS-mapped report. Join the early-access list.",
+    label: "See the inspection tool",
+    href: "/tool",
+  },
+} as const;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType="article"
+  schema={[schemaGraph]}
+>
+  <div class="container">
+    <article class="article measure">
+      <Breadcrumbs crumbs={crumbs} />
+
+      <header class="article-head">
+        <h1>{title}</h1>
+        <p class="reviewed">
+          Last reviewed
+          <time datetime={reviewedISO}>{fmt(lastReviewed)}</time>
+        </p>
+      </header>
+
+      <div class="prose">
+        <slot />
+      </div>
+
+      {faqs.length > 0 && <FAQ items={faqs} />}
+
+      <AuthorBox />
+
+      {
+        relatedLinks.length > 0 && (
+          <nav class="related" aria-label="Related guides">
+            <h2>Related guides</h2>
+            <ul>
+              {relatedLinks.map((l) => (
+                <li>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+
+      {
+        cta === "referral" ? (
+          <LeadForm audience={audience} />
+        ) : (
+          <section class="cta-block card">
+            <h2>{CTAS[cta].heading}</h2>
+            <p>{CTAS[cta].body}</p>
+            <a class="btn btn-primary" href={CTAS[cta].href}>
+              {CTAS[cta].label}
+            </a>
+          </section>
+        )
+      }
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .article { padding-block: var(--space-8) var(--space-12); }
+  .article-head .reviewed {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    margin-top: calc(-1 * var(--space-2));
+  }
+
+  /* Article body typography — comfortable reading measure. */
+  .prose :global(h2) { margin-top: var(--space-12); }
+  .prose :global(h3) { margin-top: var(--space-8); }
+  .prose :global(ul),
+  .prose :global(ol) { padding-left: 1.25rem; }
+  .prose :global(li) { margin-bottom: var(--space-2); }
+  .prose :global(a) { text-decoration: underline; }
+  .prose :global(blockquote) {
+    margin: var(--space-6) 0;
+    padding: var(--space-4) var(--space-6);
+    border-left: 4px solid var(--color-primary);
+    background: var(--color-surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--color-ink);
+  }
+  /* Warning/disclaimer callout — use a blockquote with class="warn" in MDX. */
+  .prose :global(.warn) {
+    border-left-color: var(--color-warn);
+    background: var(--color-warn-bg);
+  }
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-6) 0;
+    font-size: 0.9375rem;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    border: 1px solid var(--color-border);
+    padding: var(--space-3);
+    text-align: left;
+  }
+  .prose :global(th) { background: var(--color-surface); }
+
+  .related { margin-block: var(--space-12); }
+  .related ul { padding-left: 1.25rem; }
+  .related li { margin-bottom: var(--space-2); }
+
+  .cta-block { margin-block: var(--space-12); }
+  .cta-block h2 { margin-top: 0; }
+</style>

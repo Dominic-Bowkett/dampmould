@@ -1,0 +1,13 @@
+# Cloudflare Pages configuration.
+# Pages serves the static build in dist/ and auto-deploys Functions from /functions.
+#
+# In the Cloudflare Pages dashboard (or `wrangler pages deploy`):
+#   Build command:      npm run build
+#   Build output dir:   dist
+#
+# Set lead-handler secrets as Pages environment variables (never commit them):
+#   LEAD_FORWARD_URL, LEAD_FORWARD_TOKEN, LEAD_NOTIFY_EMAIL   (see functions/api/lead.js)
+
+name = "damp-mould-hub"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-06-01"
