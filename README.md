@@ -53,8 +53,8 @@ images, Lighthouse + schema validation).
 ## Build progress
 
 - [x] **1–4.** Scaffold, config, base layout, components, content schema
-- [ ] 5. Home + About
-- [ ] 6. Pillar A — Awaab's Law
+- [x] **5.** Home + About
+- [x] **6.** Pillar A — Awaab's Law (4 pages)
 - [ ] 7. Pillar B + compensation calculator + lead form
 - [ ] 8. Pillar C — HHSRS hub et al.
 - [ ] 9. /tool, /privacy, /contact, OG images

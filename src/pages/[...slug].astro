@@ -11,30 +11,7 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import ArticleLayout from "../layouts/ArticleLayout.astro";
 import { NAV } from "../config";
 import type { Crumb } from "../lib/schema";
-
-type Collection = "awaabs-law" | "tenants" | "professional";
-
-// Where each collection mounts in the URL tree (professional pages sit at root).
-const BASE: Record<Collection, string> = {
-  "awaabs-law": "/awaabs-law",
-  tenants: "/tenants",
-  professional: "",
-};
-
-// Human label for each pillar's top-level breadcrumb.
-const PILLAR_LABEL: Record<Collection, string> = {
-  "awaabs-law": "Awaab's Law",
-  tenants: "Tenant help",
-  professional: "Landlords & professionals",
-};
-
-/** Build the public URL for an entry from its collection + slug. */
-function urlFor(collection: Collection, slug: string): string {
-  // An "index" slug represents the collection's landing page.
-  const clean = slug.replace(/(^|\/)index$/, "");
-  const path = `${BASE[collection]}/${clean}`.replace(/\/+/g, "/").replace(/\/$/, "");
-  return path === "" ? "/" : path;
-}
+import { type Collection, BASE, PILLAR_LABEL, urlFor } from "../lib/routes";
 
 export async function getStaticPaths() {
   const collections: Collection[] = ["awaabs-law", "tenants", "professional"];

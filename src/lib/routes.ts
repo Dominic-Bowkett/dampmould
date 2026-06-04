@@ -1,0 +1,29 @@
+/**
+ * Routing helpers for content collections. Kept in their own module (not inline
+ * in [...slug].astro) because Astro hoists getStaticPaths above same-file
+ * declarations — anything it calls must be imported, not declared alongside it.
+ */
+
+export type Collection = "awaabs-law" | "tenants" | "professional";
+
+/** Where each collection mounts in the URL tree (professional pages sit at root). */
+export const BASE: Record<Collection, string> = {
+  "awaabs-law": "/awaabs-law",
+  tenants: "/tenants",
+  professional: "",
+};
+
+/** Human label for each pillar's top-level breadcrumb. */
+export const PILLAR_LABEL: Record<Collection, string> = {
+  "awaabs-law": "Awaab's Law",
+  tenants: "Tenant help",
+  professional: "Landlords & professionals",
+};
+
+/** Build the public URL for an entry from its collection + slug. */
+export function urlFor(collection: Collection, slug: string): string {
+  // An "index" slug represents the collection's landing page.
+  const clean = slug.replace(/(^|\/)index$/, "");
+  const path = `${BASE[collection]}/${clean}`.replace(/\/+/g, "/").replace(/\/$/, "");
+  return path === "" ? "/" : path;
+}
