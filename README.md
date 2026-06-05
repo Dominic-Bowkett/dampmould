@@ -44,11 +44,11 @@ Connect the Git repo to Cloudflare Pages:
 
 ## Before launch
 
-`REPLACE_DOMAIN` is used as the domain placeholder throughout (canonicals,
-sitemap, robots, schema). Find-and-replace it with the real domain, then work
-through the pre-launch checklist in `CLAUDE.md` §11 (GA4 ID, Search Console
-token, lead endpoint secrets, solicitor referral partner, author photo + OG
-images, Lighthouse + schema validation).
+Domain is set to **dampmouldhub.com** (canonicals, sitemap, robots, schema) and
+the enquiry forms email **help@dampmouldhub.com**. Remaining pre-launch items are
+in `CLAUDE.md` §11 / `docs/SEO-AUDIT.md` §6 (GA4 ID, Search Console token,
+solicitor referral partner, real OG PNG, complete the privacy notice, Lighthouse
++ schema validation).
 
 ## Build progress
 

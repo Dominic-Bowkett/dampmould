@@ -3,21 +3,18 @@
  * and primary navigation. Imported by layouts/components.
  */
 
-// REPLACE_DOMAIN: the real host goes here too (used in some absolute-URL schema).
+// Production host (used for canonicals, sitemap and absolute-URL schema).
 export const SITE = {
   name: "Damp & Mould Hub",
   // Short tagline used in header/footer and default meta.
   tagline: "Awaab's Law, HHSRS & tenant damp-and-mould help — England",
-  url: "https://REPLACE_DOMAIN",
+  url: "https://dampmouldhub.com",
   // Default social/OG image. SVG placeholder for now — replace with a
   // 1200x630 PNG/JPG before launch for full social-platform support.
   defaultOgImage: "/images/og-default.svg",
   locale: "en_GB",
   // Where the contact / enquiry forms address their email (mailto: approach).
-  // TODO: set this to the real inbox before launch. A dedicated address (e.g.
-  // hello@yourdomain) is better than a personal one — a mailto address is
-  // visible in the page source and can attract spam.
-  contactEmail: "hello@REPLACE_DOMAIN",
+  contactEmail: "help@dampmouldhub.com",
 };
 
 /**

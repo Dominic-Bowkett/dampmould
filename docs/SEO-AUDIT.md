@@ -14,7 +14,7 @@ fixed, and what still needs doing before/after launch.
 | **Unique `<title>` per page** | ✅ | All 21 pages; primary keyword in title; brand suffix "Damp & Mould Hub". |
 | **One `<h1>` per page** | ✅ | Verified 1 per page sitewide. |
 | **Meta description per page** | ✅ | Unique, ~150–180 chars, leads with primary keyword. |
-| **Canonical URLs** | ✅ | Self-referencing canonical on every page (`REPLACE_DOMAIN`). |
+| **Canonical URLs** | ✅ | Self-referencing canonical on every page (dampmouldhub.com). |
 | **Open Graph + Twitter cards** | ✅ | Title/desc/image/url on every page; default OG image set. |
 | **JSON-LD schema** | ✅ | 21/21 valid: `Organization` + `Person` everywhere; `Article` + `BreadcrumbList` + `FAQPage` on articles; `HowTo` on step pages; `WebSite` on home. |
 | **Heading hierarchy** | ✅ | Logical H1 → H2 → H3; no skipped levels. |
@@ -80,7 +80,7 @@ and minimal CSS. To verify:
 1. Deploy the preview (Cloudflare Pages / `wrangler pages deploy dist`).
 2. Chrome DevTools → Lighthouse → Mobile → analyse a content page (e.g. `/awaabs-law`).
 3. Expect ≥95 on Performance/SEO/Best Practices/Accessibility. Likely only flag:
-   the SVG OG image (replace with PNG) and `REPLACE_DOMAIN` (swap for real domain).
+   the SVG OG image (replace with PNG).
 4. Validate schema: paste a few URLs into Google's **Rich Results Test** and the
    **Schema Markup Validator** — expect Article, FAQ, HowTo, Breadcrumb to pass.
 
@@ -128,7 +128,7 @@ penetrating damp, damp and mould survey.
 
 ## 6. Pre-launch SEO TODOs
 
-- [ ] Find-and-replace `REPLACE_DOMAIN` with the real domain (canonicals, sitemap, robots, schema).
+- [x] Domain set to dampmouldhub.com (canonicals, sitemap, robots, schema); forms email help@dampmouldhub.com.
 - [ ] Replace SVG OG image with a 1200×630 PNG.
 - [ ] Add GA4 measurement ID + Search Console verification token (placeholders in `BaseHead.astro`).
 - [ ] Submit `sitemap-index.xml` in Search Console once live.

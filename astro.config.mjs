@@ -3,8 +3,8 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
-// REPLACE_DOMAIN: swap for the real domain before launch (used for canonicals + sitemap).
-const SITE = "https://REPLACE_DOMAIN";
+// Production domain (used for canonicals + sitemap).
+const SITE = "https://dampmouldhub.com";
 
 // https://astro.build/config
 export default defineConfig({

@@ -31,8 +31,7 @@ const {
 
 const siteBase = SITE.url.replace(/\/$/, "");
 // Build canonical from the current path unless one is explicitly passed.
-// Concatenate (don't use `new URL`) so the REPLACE_DOMAIN placeholder keeps its
-// exact casing for a clean find-and-replace before launch.
+// Concatenate (don't use `new URL`) so the configured domain keeps its exact form.
 const canonicalUrl = canonical
   ? (/^https?:\/\//.test(canonical) ? canonical : `${siteBase}${canonical}`)
   : `${siteBase}${Astro.url.pathname}`;
