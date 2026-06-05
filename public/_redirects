@@ -1,0 +1,5 @@
+# Cloudflare Pages redirects.
+# Canonical host is www. Redirect the bare/apex domain to www (301).
+# Requires BOTH dampmouldhub.com and www.dampmouldhub.com to be attached as
+# custom domains on the Pages project.
+https://dampmouldhub.com/* https://www.dampmouldhub.com/:splat 301
