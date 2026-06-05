@@ -81,12 +81,23 @@ const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
   ))
 }
 
-<!-- TODO: Google Analytics 4 — add real measurement ID before launch.
-<script async src="https://www.googletagmanager.com/gtag/js?id=REPLACE_GA4_ID"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'REPLACE_GA4_ID');
-</script>
--->
+<!-- Google Analytics 4 (gtag.js) — only emitted when SITE.ga4Id is set. -->
+{
+  SITE.ga4Id && (
+    <>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${SITE.ga4Id}`}
+      />
+      <script is:inline define:vars={{ ga4Id: SITE.ga4Id }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", ga4Id);
+      </script>
+    </>
+  )
+}

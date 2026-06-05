@@ -15,6 +15,8 @@ export const SITE = {
   locale: "en_GB",
   // Where the contact / enquiry forms address their email (mailto: approach).
   contactEmail: "help@dampmouldhub.com",
+  // Google Analytics 4 measurement ID (empty string disables the tag).
+  ga4Id: "G-88XYLSCSM6",
 };
 
 /**
