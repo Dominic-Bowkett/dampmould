@@ -1,0 +1,113 @@
+---
+/**
+ * ConsentBanner — lightweight cookie-consent banner for analytics (UK GDPR/PECR).
+ *
+ * Works with Google Consent Mode v2 set up in BaseHead: analytics_storage starts
+ * "denied" (no cookies). Accept -> updates consent to granted + remembers it;
+ * Reject -> stays denied. The choice is stored in localStorage ("dmh-consent").
+ * Only relevant when analytics is enabled, so the layout renders it conditionally.
+ *
+ * Exposes window.dmhConsent.show() so a "Cookie settings" link can reopen it.
+ */
+---
+
+<div
+  class="consent"
+  data-consent
+  role="dialog"
+  aria-label="Cookie consent"
+  aria-live="polite"
+  hidden
+>
+  <div class="container consent-inner">
+    <p class="consent-text">
+      We'd like to use <strong>Google Analytics</strong> cookies to understand how
+      the site is used and improve it. No analytics cookies are set unless you
+      accept. See our <a href="/privacy">privacy notice</a>.
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="btn btn-ghost" data-consent-reject>Reject</button>
+      <button type="button" class="btn btn-accent" data-consent-accept>Accept</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = "dmh-consent";
+    var el = document.querySelector("[data-consent]");
+    if (!el) return;
+
+    function save(v) {
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+    }
+    function get() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function hide() { el.hidden = true; }
+    function show() { el.hidden = false; }
+
+    function grant() {
+      save("granted");
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", { analytics_storage: "granted" });
+      }
+      hide();
+    }
+    function deny() {
+      save("denied");
+      if (typeof window.gtag === "function") {
+        window.gtag("consent", "update", { analytics_storage: "denied" });
+      }
+      hide();
+    }
+
+    el.querySelector("[data-consent-accept]").addEventListener("click", grant);
+    el.querySelector("[data-consent-reject]").addEventListener("click", deny);
+
+    // Let other UI (e.g. a footer "Cookie settings" link) reopen the banner.
+    window.dmhConsent = { show: show };
+
+    // Show only if the visitor hasn't chosen yet.
+    if (!get()) show();
+  })();
+</script>
+
+<style>
+  .consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 200;
+    background: var(--color-footer-bg);
+    color: var(--color-on-dark);
+    border-top: 3px solid var(--color-accent);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.18);
+  }
+  .consent-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-block: var(--space-4);
+  }
+  .consent-text {
+    margin: 0;
+    font-size: 0.9375rem;
+  }
+  .consent-text a { color: var(--color-accent); }
+  .consent-actions {
+    display: flex;
+    gap: var(--space-3);
+    flex: none;
+  }
+  /* Ghost button needs light styling on the dark banner. */
+  .consent .btn-ghost {
+    color: var(--color-on-dark);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  .consent .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+  @media (max-width: 639px) {
+    .consent-inner { flex-direction: column; align-items: stretch; gap: var(--space-3); }
+    .consent-actions { justify-content: flex-end; }
+  }
+</style>

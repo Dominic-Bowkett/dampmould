@@ -67,8 +67,7 @@ const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
 
-<!-- TODO: Search Console verification — add real token before launch.
-<meta name="google-site-verification" content="REPLACE_SEARCH_CONSOLE_TOKEN" /> -->
+<!-- Search Console is verified via DNS; no HTML meta tag needed. -->
 
 <!-- JSON-LD structured data -->
 {
@@ -81,7 +80,8 @@ const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
   ))
 }
 
-<!-- Google Analytics 4 (gtag.js) — only emitted when SITE.ga4Id is set. -->
+<!-- Google Analytics 4 with Consent Mode v2 — analytics stays denied (no
+     cookies) until the visitor opts in via the consent banner. -->
 {
   SITE.ga4Id && (
     <>
@@ -95,8 +95,24 @@ const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
         function gtag() {
           dataLayer.push(arguments);
         }
+        // Default: deny storage/cookies until the user consents.
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          analytics_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          functionality_storage: "granted",
+          security_storage: "granted",
+          wait_for_update: 500,
+        });
+        // Re-apply a previously saved "accept" before configuring GA.
+        try {
+          if (localStorage.getItem("dmh-consent") === "granted") {
+            gtag("consent", "update", { analytics_storage: "granted" });
+          }
+        } catch (e) {}
         gtag("js", new Date());
-        gtag("config", ga4Id);
+        gtag("config", ga4Id, { anonymize_ip: true });
       </script>
     </>
   )

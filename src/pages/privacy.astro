@@ -1,12 +1,13 @@
 ---
 /**
- * /privacy — privacy notice. Linked from every LeadForm. UK GDPR-aligned, but
- * the legally-specific bits (controller identity, contact, processors, retention
- * periods) are left as TODOs for Dom to confirm before launch.
+ * /privacy — privacy notice (UK GDPR / DPA 2018 / PECR). Linked from every
+ * LeadForm and the consent banner. Reflects the site's actual data flows:
+ * mailto enquiry forms, Cloudflare hosting, and Google Analytics 4 gated behind
+ * consent.
  */
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import { SITE } from "../config";
+import { SITE, AUTHOR } from "../config";
 import { graph, organizationSchema, breadcrumbSchema } from "../lib/schema";
 import type { Crumb } from "../lib/schema";
 
@@ -20,7 +21,7 @@ const crumbs: Crumb[] = [
 ];
 const schema = graph(organizationSchema(), breadcrumbSchema(crumbs));
 
-const updated = new Date("2026-06-04");
+const updated = new Date("2026-06-05");
 const fmt = (d: Date) =>
   d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 ---
@@ -39,63 +40,110 @@ const fmt = (d: Date) =>
         and the Data Protection Act 2018).
       </p>
 
-      <!-- TODO: Dom to confirm the data controller's legal identity and a
-           contact email/address before launch, and register with the ICO if
-           required. -->
       <h2>Who we are</h2>
       <p>
-        The data controller for this site is
-        <strong>[TODO: controller name / business details]</strong>. You can
-        contact us about privacy at
-        <strong>[TODO: privacy contact email]</strong> or via our
-        <a href="/contact">contact page</a>.
+        This site, {SITE.name}, is operated by <strong>{AUTHOR.name}</strong>, who
+        is the data controller responsible for your personal data. You can contact
+        us about privacy or anything in this notice by email at
+        <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> or via our
+        <a href="/contact">contact page</a>. A postal address is available on
+        request.
       </p>
 
       <h2>What we collect</h2>
       <ul>
         <li>
-          <strong>Information you give us</strong> through our forms — typically
-          your name, email address, postcode and a description of your situation,
-          plus the type of enquiry.
+          <strong>Enquiry details you send us.</strong> Our enquiry forms open an
+          email in your own email app, pre-filled with the details you enter
+          (typically your name, email address, postcode and message). You choose
+          to send it, and we receive it as an ordinary email — there is no
+          database collecting form submissions on this website.
         </li>
         <li>
-          <strong>Usage data</strong> — basic, largely anonymised analytics about
-          how the site is used (for example pages viewed), to help us improve it.
-          <!-- TODO: confirm analytics provider (e.g. GA4) and update the cookies
-               section once configured. -->
+          <strong>Analytics data</strong> — but only if you accept analytics
+          cookies (see "Cookies and analytics" below). This is aggregated usage
+          information, such as pages viewed and approximate location, used to
+          understand and improve the site.
+        </li>
+        <li>
+          <strong>Technical data</strong> — like most websites, our hosting
+          provider automatically processes limited technical information (such as
+          your IP address and browser type) in server logs, to deliver the site
+          securely and reliably.
         </li>
       </ul>
 
-      <h2>How and why we use it</h2>
+      <h2>How and why we use it, and our lawful basis</h2>
       <ul>
-        <li>To <strong>respond to your enquiry</strong> and provide the help or information you've asked for.</li>
-        <li>Where relevant and with an appropriate lawful basis, to <strong>connect you with regulated help</strong> (for example an SRA-regulated solicitor) — see "Sharing" below.</li>
-        <li>To <strong>operate and improve</strong> the website.</li>
+        <li>
+          <strong>To respond to your enquiry</strong> and provide the help or
+          information you've asked for. Lawful basis: our
+          <strong>legitimate interests</strong> (and, where relevant, taking steps
+          at your request before any agreement).
+        </li>
+        <li>
+          <strong>To operate, secure and maintain the website.</strong> Lawful
+          basis: our <strong>legitimate interests</strong> in running a safe,
+          working site.
+        </li>
+        <li>
+          <strong>To measure and improve the site</strong> using analytics. Lawful
+          basis: your <strong>consent</strong>, which you give via the cookie
+          banner and can withdraw at any time.
+        </li>
+      </ul>
+
+      <h2>Who we share it with</h2>
+      <p>
+        We do <strong>not</strong> sell your personal data. We use a small number
+        of trusted service providers who process data on our behalf:
+      </p>
+      <ul>
+        <li>
+          <strong>Cloudflare</strong> — hosts the website and provides security and
+          content delivery (processes technical data such as IP addresses).
+        </li>
+        <li>
+          <strong>Google Analytics</strong> — provides website analytics, used only
+          if you accept analytics cookies.
+        </li>
+        <li>
+          <strong>Our email provider</strong> — receives and stores the enquiry
+          emails you choose to send us.
+        </li>
       </ul>
       <p>
-        Our lawful bases are typically your <strong>consent</strong> and our
-        <strong>legitimate interests</strong> in responding to enquiries and
-        running the site.
-        <!-- TODO: confirm the lawful bases that apply once processing is final. -->
+        We may also disclose information if required by law. We do not currently
+        operate a solicitor-referral service; if we introduce one, we will update
+        this notice and will only share your details with a regulated partner
+        where we have a lawful basis to do so.
       </p>
 
-      <h2>Sharing your information</h2>
+      <h2>International transfers</h2>
       <p>
-        We do not sell your personal data. We may share it with service providers
-        who help us operate the site, and — only where you've asked for that kind
-        of help and with an appropriate lawful basis — with a regulated partner
-        such as a solicitor.
-        <!-- TODO: name any processors (form/email/CRM provider) and any
-             solicitor referral partner, and confirm the lawful basis, before
-             activating referrals. Claims-referral arrangements are regulated. -->
+        Some of our providers (such as Google and Cloudflare) may process data
+        outside the UK. Where they do, transfers are protected by appropriate
+        safeguards recognised under UK data protection law, such as the UK
+        International Data Transfer Agreement or equivalent.
       </p>
 
       <h2>How long we keep it</h2>
-      <p>
-        We keep your data only as long as necessary for the purposes above, then
-        delete or anonymise it.
-        <strong>[TODO: state retention periods.]</strong>
-      </p>
+      <ul>
+        <li>
+          <strong>Enquiry emails:</strong> kept only as long as needed to deal with
+          your enquiry and for a reasonable period afterwards — normally no longer
+          than 24 months after our last contact — unless we need to keep them
+          longer for legal reasons.
+        </li>
+        <li>
+          <strong>Analytics data:</strong> retained in Google Analytics for up to
+          14 months.
+        </li>
+        <li>
+          <strong>Server logs:</strong> kept only for a short period for security
+          and troubleshooting.
+        </li>
+      </ul>
 
       <h2>Your rights</h2>
       <p>Under UK data protection law you have rights to:</p>
@@ -115,10 +163,27 @@ const fmt = (d: Date) =>
 
       <h2>Cookies and analytics</h2>
       <p>
-        We aim to keep cookies to a minimum. Where we use analytics, we'll set out
-        the details here and provide any controls required.
-        <!-- TODO: complete this section once GA4 / any cookies are configured,
-             and add a cookie banner if required. -->
+        We keep cookies to a minimum. <strong>No analytics or marketing cookies
+        are set unless you accept them</strong> using the cookie banner when you
+        first visit.
+      </p>
+      <ul>
+        <li>
+          <strong>Strictly necessary:</strong> a small amount of local storage is
+          used only to remember your cookie choice. This is essential and needs no
+          consent.
+        </li>
+        <li>
+          <strong>Analytics (optional):</strong> if you accept, Google Analytics 4
+          sets cookies (such as <code>_ga</code>) to measure how the site is used.
+          We use Google Consent Mode, so these are not set while consent is
+          declined.
+        </li>
+      </ul>
+      <p>
+        You can change your mind at any time using the
+        <strong>“Cookie settings”</strong> link in the footer, which reopens the
+        banner. You can also block or delete cookies in your browser settings.
       </p>
 
       <h2>Changes to this notice</h2>
@@ -126,12 +191,6 @@ const fmt = (d: Date) =>
         We may update this notice from time to time. The "last updated" date above
         shows when it last changed.
       </p>
-
-      <blockquote class="warn">
-        This is a starting-point privacy notice and must be reviewed and
-        completed (controller details, processors, retention, lawful bases,
-        cookies) before the site goes live and collects real data.
-      </blockquote>
     </article>
   </div>
 </BaseLayout>
@@ -142,11 +201,10 @@ const fmt = (d: Date) =>
   .legal h2 { margin-top: var(--space-8); }
   .legal ul { padding-left: 1.25rem; }
   .legal li { margin-bottom: var(--space-2); }
-  .legal blockquote.warn {
-    margin: var(--space-8) 0 0;
-    padding: var(--space-4) var(--space-6);
-    border-left: 4px solid var(--color-warn);
-    background: var(--color-warn-bg);
-    border-radius: 0 var(--radius) var(--radius) 0;
+  .legal code {
+    background: var(--color-surface);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    font-size: 0.9em;
   }
 </style>
