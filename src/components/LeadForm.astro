@@ -2,12 +2,11 @@
 /**
  * LeadForm — enquiry / lead capture. Two modes:
  *
- *  - mode="email" (DEFAULT): builds a pre-filled email from the entered values
- *    and opens the visitor's own email client (mailto:), ready for them to send.
- *    No backend required. Works as a plain mailto form even without JS; JS just
- *    formats the message nicely.
- *  - mode="post": submits to the Cloudflare Pages Function /api/lead (stub) for
- *    when a server-side email/CRM endpoint is wired up later.
+ *  - mode="post" (DEFAULT): submits to the Cloudflare Pages Function /api/lead,
+ *    which sends the enquiry to you by email (via Resend). The form sends by
+ *    itself — no email client opens. Falls back to a full-page POST without JS.
+ *  - mode="email": builds a pre-filled email and opens the visitor's own email
+ *    client (mailto:) — no backend needed.
  *
  * Honeypot field "company" is hidden from humans and dropped if filled.
  */
@@ -19,7 +18,7 @@ interface Props {
   heading?: string;
   intro?: string;
   cta?: string;
-  /** "email" = mailto (default), "post" = serverless /api/lead. */
+  /** "post" = serverless auto-send (default), "email" = mailto. */
   mode?: "email" | "post";
   /** Email subject line (email mode). */
   subject?: string;
@@ -29,7 +28,7 @@ const {
   heading = "Get help with your damp & mould issue",
   intro = "Tell us a little about your situation and we'll point you in the right direction.",
   cta = "Send",
-  mode = "email",
+  mode = "post",
   subject = "Website enquiry — Damp & Mould Hub",
 } = Astro.props;
 
