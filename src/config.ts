@@ -17,6 +17,8 @@ export const SITE = {
   contactEmail: "help@dampmouldhub.com",
   // Google Analytics 4 measurement ID (empty string disables the tag).
   ga4Id: "G-88XYLSCSM6",
+  // Ahrefs Web Analytics site key (cookieless; empty string disables it).
+  ahrefsKey: "LrNUL7e4YY88qHFP0n5+5g",
 };
 
 /**

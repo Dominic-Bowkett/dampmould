@@ -69,6 +69,18 @@ const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 
 <!-- Search Console is verified via DNS; no HTML meta tag needed. -->
 
+<!-- Ahrefs Web Analytics (cookieless — no consent needed). -->
+{
+  SITE.ahrefsKey && (
+    <script
+      is:inline
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key={SITE.ahrefsKey}
+      async
+    />
+  )
+}
+
 <!-- JSON-LD structured data -->
 {
   schema.map((node) => (
