@@ -4,7 +4,7 @@ description: "An HHSRS inspection guide, step by step: preparing, surveying the 
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs inspection"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-18
 cta: "course"
 howToSteps:

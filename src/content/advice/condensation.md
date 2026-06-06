@@ -4,7 +4,7 @@ description: "Condensation explained: what causes it in your home and how to sto
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "condensation"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-15
 cta: "service"
 faqs:

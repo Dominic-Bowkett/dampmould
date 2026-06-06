@@ -4,7 +4,7 @@ description: "What causes mould on walls? Why black mould grows on internal and 
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "what causes mould on walls"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-18
 cta: "service"
 faqs:

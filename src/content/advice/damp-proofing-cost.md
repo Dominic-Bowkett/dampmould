@@ -4,7 +4,7 @@ description: "How much does it cost to damp proof a house in the UK? What drives
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how much to damp proof a house"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-23
 cta: "service"
 faqs:

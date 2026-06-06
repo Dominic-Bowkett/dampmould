@@ -4,7 +4,7 @@ description: "HHSRS training and qualifications: what they involve, who needs th
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs training"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-20
 cta: "course"
 faqs:

@@ -4,7 +4,7 @@ description: "What is Awaab's Law? A plain-English guide to the rules on damp an
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-01-20
 cta: "referral"
 faqs:

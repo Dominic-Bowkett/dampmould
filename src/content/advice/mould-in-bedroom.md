@@ -4,7 +4,7 @@ description: "How to get rid of mould in bedroom walls and corners, and prevent 
 pillar: "advice"
 audience: "tenant"
 targetKeyword: "how to get rid of mould in bedroom"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-20
 cta: "service"
 howToSteps:

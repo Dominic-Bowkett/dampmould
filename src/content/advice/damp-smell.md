@@ -4,7 +4,7 @@ description: "How to get rid of damp smell in house: what causes the musty smell
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of damp smell in house"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-25
 cta: "service"
 howToSteps:

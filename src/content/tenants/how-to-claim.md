@@ -4,7 +4,7 @@ description: "How to claim compensation for damp and mould in a rented home in E
 pillar: "b"
 audience: "tenant"
 targetKeyword: "compensation for damp and mould"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-06
 cta: "referral"
 howToSteps:

@@ -4,7 +4,7 @@ description: "How to find regulated damp and mould solicitors in England — wha
 pillar: "b"
 audience: "tenant"
 targetKeyword: "damp and mould solicitors"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-08
 cta: "referral"
 faqs:

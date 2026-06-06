@@ -4,7 +4,7 @@ description: "HHSRS explained: a practitioner's guide to the Housing Health and 
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-16
 cta: "course"
 faqs:

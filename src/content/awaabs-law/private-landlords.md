@@ -4,7 +4,7 @@ description: "Does Awaab's Law apply to private landlords? It began in social ho
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law private landlords"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-01-24
 cta: "referral"
 faqs:

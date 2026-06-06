@@ -4,7 +4,7 @@ description: "Rising damp explained: the real signs, what causes it, how it's of
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "rising damp"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-16
 cta: "service"
 faqs:

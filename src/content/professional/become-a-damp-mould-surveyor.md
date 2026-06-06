@@ -4,7 +4,7 @@ description: "How to become a damp and mould surveyor: the skills and qualificat
 pillar: "c"
 audience: "professional"
 targetKeyword: "damp and mould surveyor jobs"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-02
 cta: "course"
 faqs:

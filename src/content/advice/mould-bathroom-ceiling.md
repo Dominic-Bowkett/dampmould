@@ -4,7 +4,7 @@ description: "How to get rid of mould on bathroom ceiling surfaces: clean it off
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of mould on bathroom ceiling"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-21
 cta: "service"
 howToSteps:

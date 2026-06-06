@@ -4,7 +4,7 @@ description: "What causes damp in a house? Condensation, penetrating and rising 
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "what causes damp in a house"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-17
 cta: "service"
 faqs:

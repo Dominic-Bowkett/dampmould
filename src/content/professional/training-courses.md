@@ -4,7 +4,7 @@ description: "Practitioner-led damp and mould training courses covering HHSRS an
 pillar: "c"
 audience: "professional"
 targetKeyword: "damp and mould training courses"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-04
 cta: "referral"
 faqs:

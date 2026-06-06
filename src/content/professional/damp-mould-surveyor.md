@@ -4,7 +4,7 @@ description: "What a damp and mould surveyor does, how an independent survey dif
 pillar: "c"
 audience: "landlord"
 targetKeyword: "damp and mould surveyor"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-23
 cta: "referral"
 faqs:

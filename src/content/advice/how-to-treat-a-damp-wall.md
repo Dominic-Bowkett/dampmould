@@ -4,7 +4,7 @@ description: "How to treat a damp wall: find the cause, stop the moisture, dry i
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to treat a damp wall"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-22
 cta: "service"
 howToSteps:

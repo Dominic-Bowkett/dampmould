@@ -4,7 +4,7 @@ description: "Your rights as a tenant on damp and mould in the UK: what your lan
 pillar: "b"
 audience: "tenant"
 targetKeyword: "tenants' rights damp and mould uk"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-02
 cta: "referral"
 faqs:

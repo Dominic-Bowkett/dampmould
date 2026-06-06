@@ -4,7 +4,7 @@ description: "How to find a damp and mould specialist near you — what qualific
 pillar: "c"
 audience: "landlord"
 targetKeyword: "damp and mould specialist near me"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-25
 cta: "referral"
 faqs:

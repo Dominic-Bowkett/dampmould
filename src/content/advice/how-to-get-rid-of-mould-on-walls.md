@@ -4,7 +4,7 @@ description: "How to get rid of mould on walls permanently: clean it off safely,
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of mould on walls permanently"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-12
 cta: "service"
 howToSteps:

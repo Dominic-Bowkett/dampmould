@@ -4,7 +4,7 @@ description: "Awaab's Law for social housing landlords in England: the duties, t
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law social housing"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-01-26
 cta: "referral"
 faqs:

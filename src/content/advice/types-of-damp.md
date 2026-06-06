@@ -4,7 +4,7 @@ description: "Penetrating damp, rising damp and condensation explained: how to t
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "penetrating damp"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-14
 cta: "service"
 faqs:

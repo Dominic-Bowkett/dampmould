@@ -4,7 +4,7 @@ description: "Is mould dangerous? Mould health risks from damp and black mould e
 pillar: "advice"
 audience: "tenant"
 targetKeyword: "mould health risks"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-24
 cta: "service"
 faqs:

@@ -4,7 +4,7 @@ description: "Awaab's Law timescales explained: the deadlines to investigate dam
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law timescales"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-01-22
 cta: "referral"
 faqs:

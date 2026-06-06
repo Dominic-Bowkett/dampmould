@@ -4,7 +4,7 @@ description: "What a damp and mould survey involves, the types of damp, what the
 pillar: "c"
 audience: "landlord"
 targetKeyword: "damp and mould survey"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-02-27
 cta: "service"
 faqs:

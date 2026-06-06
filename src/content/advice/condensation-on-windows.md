@@ -4,7 +4,7 @@ description: "Condensation on windows: why you get it and how to stop it — pra
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "condensation on windows"
-lastReviewed: 2026-06-04
+lastReviewed: 2026-06-06
 datePublished: 2026-03-13
 cta: "service"
 howToSteps:
