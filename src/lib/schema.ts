@@ -24,6 +24,7 @@ export function personSchema(): JsonLd {
     description: AUTHOR.bioShort,
     url: absUrl(AUTHOR.aboutUrl),
     image: absUrl(AUTHOR.photo),
+    ...(AUTHOR.website ? { sameAs: [AUTHOR.website] } : {}),
     hasCredential: AUTHOR.credentials.map((c) => ({
       "@type": "EducationalOccupationalCredential",
       name: c,

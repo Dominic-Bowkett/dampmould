@@ -37,6 +37,10 @@ export const AUTHOR = {
   // TODO: replace with real author photo before launch.
   photo: "/images/author-dom.jpg",
   aboutUrl: "/about",
+  // Author's professional site — linked from the author box / about page and
+  // emitted as schema sameAs (E-E-A-T).
+  website: "https://dominicbowkett.com",
+  websiteLabel: "dominicbowkett.com",
 };
 
 /** Primary navigation — one entry per pillar plus key conversion pages. */

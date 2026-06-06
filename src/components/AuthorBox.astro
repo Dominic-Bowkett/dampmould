@@ -26,6 +26,12 @@ import { AUTHOR } from "../config";
     <p class="author-bio">{AUTHOR.bioShort}</p>
     <p class="author-link">
       <a href={AUTHOR.aboutUrl}>More about {AUTHOR.name.split(" ")[0]} →</a>
+      {AUTHOR.website && (
+        <>
+          {" · "}
+          <a href={AUTHOR.website} target="_blank" rel="noopener">{AUTHOR.websiteLabel}</a>
+        </>
+      )}
     </p>
   </div>
 </aside>
