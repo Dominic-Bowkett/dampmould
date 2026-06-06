@@ -19,6 +19,8 @@ export const SITE = {
   ga4Id: "G-88XYLSCSM6",
   // Ahrefs Web Analytics site key (cookieless; empty string disables it).
   ahrefsKey: "LrNUL7e4YY88qHFP0n5+5g",
+  // IndexNow key (also hosted at /<key>.txt) for instant search-engine pings.
+  indexNowKey: "b4f1393eadbe6db4b269131a1c5ea74f",
 };
 
 /**
