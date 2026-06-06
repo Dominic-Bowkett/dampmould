@@ -9,9 +9,9 @@ export const SITE = {
   // Short tagline used in header/footer and default meta.
   tagline: "Awaab's Law, HHSRS & tenant damp-and-mould help — England",
   url: "https://www.dampmouldhub.com",
-  // Default social/OG image. SVG placeholder for now — replace with a
-  // 1200x630 PNG/JPG before launch for full social-platform support.
-  defaultOgImage: "/images/og-default.svg",
+  // Default social/OG image — 1200x630 PNG (broad social-platform support).
+  // Source SVG is public/images/og-default.svg; regenerate with sharp if edited.
+  defaultOgImage: "/images/og-default.png",
   locale: "en_GB",
   // Where the contact / enquiry forms address their email (mailto: approach).
   contactEmail: "help@dampmouldhub.com",
