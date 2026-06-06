@@ -1,6 +1,6 @@
 ---
 title: "How to Treat a Damp Wall"
-description: "How to treat a damp wall — how to find the cause, dry it out, repair the source of moisture and redecorate so the damp doesn't come back. Step-by-step practitioner advice."
+description: "How to treat a damp wall: find the cause, stop the moisture, dry it out, replace damaged plaster and redecorate so the damp doesn't return."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to treat a damp wall"

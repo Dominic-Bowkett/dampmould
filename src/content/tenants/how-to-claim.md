@@ -1,6 +1,6 @@
 ---
 title: "How to Claim Compensation for Damp and Mould"
-description: "How to claim compensation for damp and mould in a rented home in England — a step-by-step guide from gathering evidence to instructing a solicitor and what to expect."
+description: "How to claim compensation for damp and mould in a rented home in England — a step-by-step guide from gathering evidence to instructing a solicitor."
 pillar: "b"
 audience: "tenant"
 targetKeyword: "compensation for damp and mould"

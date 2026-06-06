@@ -1,6 +1,6 @@
 ---
 title: "Condensation: Why It Happens and How to Stop It"
-description: "What condensation is, what causes it in your home, and how to stop it — practical, lasting fixes for ventilation, heating and humidity to prevent damp and mould."
+description: "Condensation explained: what causes it in your home and how to stop it — practical fixes for ventilation, heating and humidity to prevent damp and mould."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "condensation"

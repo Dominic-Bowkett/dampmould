@@ -1,6 +1,6 @@
 ---
 title: "How to Get Rid of Mould on Walls Permanently"
-description: "How to get rid of mould on walls permanently — how to clean it off safely, and the crucial second step most guides miss: fixing the damp or condensation that causes it."
+description: "How to get rid of mould on walls permanently: clean it off safely, then fix the damp or condensation that causes it. Step-by-step practitioner advice."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of mould on walls permanently"

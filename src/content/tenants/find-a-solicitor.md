@@ -1,6 +1,6 @@
 ---
 title: "Damp and Mould Solicitors: How to Find Help"
-description: "How to find regulated damp and mould solicitors (housing disrepair) in England — what to look for, what to ask, how no-win-no-fee works, and how to avoid claims-firm pitfalls."
+description: "How to find regulated damp and mould solicitors in England — what to look for, what to ask, how no-win-no-fee works, and how to avoid pitfalls."
 pillar: "b"
 audience: "tenant"
 targetKeyword: "damp and mould solicitors"

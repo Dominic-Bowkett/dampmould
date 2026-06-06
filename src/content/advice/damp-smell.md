@@ -1,6 +1,6 @@
 ---
 title: "How to Get Rid of a Damp Smell in the House"
-description: "How to get rid of damp smell in house — what causes that musty smell, how to clear it, and how to stop it returning by tackling the moisture and mould behind it."
+description: "How to get rid of damp smell in house: what causes the musty smell, how to clear it, and how to stop it returning by tackling the moisture behind it."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of damp smell in house"

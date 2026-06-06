@@ -1,6 +1,6 @@
 ---
 title: "Penetrating Damp & the Types of Damp Explained"
-description: "Penetrating damp, rising damp and condensation explained — how to tell the types of damp apart from their signs and causes, and why correct diagnosis decides the right fix."
+description: "Penetrating damp, rising damp and condensation explained: how to tell the types of damp apart from their signs and causes, and why diagnosis matters."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "penetrating damp"

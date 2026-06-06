@@ -1,6 +1,6 @@
 ---
 title: "How to Get Rid of Mould in the Bedroom"
-description: "How to get rid of mould in bedroom walls and corners, and prevent it — why bedrooms are prone to condensation and black mould, and the steps to stop it for good."
+description: "How to get rid of mould in bedroom walls and corners, and prevent it — why bedrooms get condensation and black mould, and how to stop it."
 pillar: "advice"
 audience: "tenant"
 targetKeyword: "how to get rid of mould in bedroom"

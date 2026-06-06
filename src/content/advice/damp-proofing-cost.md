@@ -1,6 +1,6 @@
 ---
 title: "How Much Does It Cost to Damp Proof a House?"
-description: "How much to damp proof a house in the UK — what drives the cost, the main treatment types, and why an independent diagnosis first can save you the most money."
+description: "How much does it cost to damp proof a house in the UK? What drives the price, the treatment types, and why diagnosis first saves the most money."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how much to damp proof a house"

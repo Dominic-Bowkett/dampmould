@@ -1,6 +1,6 @@
 ---
 title: "How to Stop Condensation on Windows"
-description: "Condensation on windows: why you get it on the inside of windows and how to stop it — practical fixes for ventilation, heating and humidity that cut moisture and prevent mould."
+description: "Condensation on windows: why you get it and how to stop it — practical fixes for ventilation, heating and humidity that cut moisture and prevent mould."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "condensation on windows"

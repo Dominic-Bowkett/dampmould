@@ -1,6 +1,6 @@
 ---
 title: "How to Get Rid of Mould on the Ceiling"
-description: "How to get rid of mould on ceiling surfaces — remove black mould safely, find the cause (condensation or a leak), and stop it returning. Step-by-step practitioner advice."
+description: "How to get rid of mould on ceiling surfaces: remove black mould safely, find the cause (condensation or a leak), and stop it returning."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of mould on ceiling"

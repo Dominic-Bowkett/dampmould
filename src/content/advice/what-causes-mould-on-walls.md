@@ -1,6 +1,6 @@
 ---
 title: "What Causes Mould on Walls?"
-description: "What causes mould on walls — why black mould grows on internal and external walls, the role of condensation, cold spots and ventilation, and how to stop it returning."
+description: "What causes mould on walls? Why black mould grows on internal and external walls, the role of condensation and ventilation, and how to stop it."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "what causes mould on walls"

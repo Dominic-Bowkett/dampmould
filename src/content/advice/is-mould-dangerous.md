@@ -1,6 +1,6 @@
 ---
 title: "Is Mould Dangerous? Health Risks Explained"
-description: "Is mould dangerous? Mould health risks from damp and black mould explained — who is most at risk, the symptoms to watch for, and when to act. Practitioner guidance, cite NHS."
+description: "Is mould dangerous? Mould health risks from damp and black mould explained — who's most at risk, symptoms to watch for, and when to act."
 pillar: "advice"
 audience: "tenant"
 targetKeyword: "mould health risks"

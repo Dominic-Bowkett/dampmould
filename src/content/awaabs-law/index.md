@@ -1,6 +1,6 @@
 ---
 title: "What is Awaab's Law? The Complete Guide (2026)"
-description: "A plain-English, practitioner-led guide to Awaab's Law in England — what it requires, the timescales, who it applies to, and what it means for tenants and landlords."
+description: "What is Awaab's Law? A plain-English guide to the rules on damp and mould in England — the duties, timescales, and what they mean for tenants and landlords."
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law"

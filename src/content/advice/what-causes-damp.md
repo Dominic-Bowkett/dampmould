@@ -1,6 +1,6 @@
 ---
 title: "What Causes Damp in a House?"
-description: "What causes damp in a house — condensation, penetrating and rising damp, leaks and cold spots explained, with how to spot the cause and fix damp in a house for good."
+description: "What causes damp in a house? Condensation, penetrating and rising damp, leaks and cold spots explained — with how to spot the cause and fix it."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "what causes damp in a house"

@@ -1,6 +1,6 @@
 ---
 title: "Rising Damp: Signs, Causes and Treatment"
-description: "Rising damp explained — the real signs, what causes it, how it's often misdiagnosed, and how it's treated. Practitioner guidance on getting the diagnosis right first."
+description: "Rising damp explained: the real signs, what causes it, how it's often misdiagnosed, and how it's treated. Get the diagnosis right before you spend."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "rising damp"

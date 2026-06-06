@@ -1,6 +1,6 @@
 ---
 title: "How to Get Rid of Mould on a Bathroom Ceiling"
-description: "How to get rid of mould on bathroom ceiling surfaces — clean black mould off safely and stop it returning by fixing the real cause: steam, poor extraction and a cold ceiling."
+description: "How to get rid of mould on bathroom ceiling surfaces: clean it off safely and stop it returning by fixing the steam, ventilation and cold-ceiling cause."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "how to get rid of mould on bathroom ceiling"

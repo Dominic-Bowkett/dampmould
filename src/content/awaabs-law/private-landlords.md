@@ -1,6 +1,6 @@
 ---
 title: "Does Awaab's Law Apply to Private Landlords?"
-description: "Does Awaab's Law apply to private landlords? It began in social housing and is being extended to private rented homes in England via the Renters' Rights Act. What to know."
+description: "Does Awaab's Law apply to private landlords? It began in social housing and is being extended to private rented homes in England. What landlords must know."
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law private landlords"

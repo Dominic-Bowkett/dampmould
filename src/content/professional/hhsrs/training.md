@@ -1,6 +1,6 @@
 ---
 title: "HHSRS Training & Qualifications"
-description: "What HHSRS training and qualifications involve, who needs them, and how to choose a course — for environmental health officers, surveyors, landlords and career-changers."
+description: "HHSRS training and qualifications: what they involve, who needs them, and how to choose a course — for officers, surveyors, landlords and career-changers."
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs training"

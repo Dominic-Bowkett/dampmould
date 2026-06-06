@@ -1,6 +1,6 @@
 ---
-title: "Damp and Mould Surveyor: What They Do & When to Hire"
-description: "What a damp and mould surveyor does, how an independent survey differs from a 'free' contractor inspection, what it costs, and when landlords and tenants should hire one."
+title: "Damp and Mould Surveyor: When to Hire"
+description: "What a damp and mould surveyor does, how an independent survey differs from a 'free' inspection, and when landlords and tenants should hire one."
 pillar: "c"
 audience: "landlord"
 targetKeyword: "damp and mould surveyor"

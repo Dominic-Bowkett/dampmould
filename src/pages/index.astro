@@ -10,6 +10,10 @@ import { graph, webSiteSchema, organizationSchema, personSchema } from "../lib/s
 
 const schema = graph(webSiteSchema(), organizationSchema(), personSchema());
 
+// Dedicated home meta description (the tagline alone is too short for SEO).
+const homeDescription =
+  "Practitioner-led help with damp, mould and Awaab's Law in England — for tenants, landlords and housing professionals, by a qualified building surveyor.";
+
 // Three audience pathways shown as cards.
 const audiences = [
   {
@@ -51,7 +55,7 @@ const audiences = [
 ];
 ---
 
-<BaseLayout title={SITE.name} description={SITE.tagline} ogType="website" schema={[schema]}>
+<BaseLayout title={SITE.name} description={homeDescription} ogType="website" schema={[schema]}>
   <!-- Hero -->
   <section class="hero">
     <div class="container measure">

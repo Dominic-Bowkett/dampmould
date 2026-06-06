@@ -1,6 +1,6 @@
 ---
 title: "HHSRS Explained: The Complete Guide"
-description: "A practitioner's guide to HHSRS — the Housing Health and Safety Rating System — covering the 29 hazards, how assessment and scoring work, and how councils enforce it."
+description: "HHSRS explained: a practitioner's guide to the Housing Health and Safety Rating System — the 29 hazards, how scoring works, and how councils enforce it."
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs"

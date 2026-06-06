@@ -1,6 +1,6 @@
 ---
-title: "Damp & Mould Advice: Causes, Treatment & Prevention"
-description: "Practical, practitioner-checked advice on damp and mould — how to get rid of it, what causes condensation, rising and penetrating damp, costs, and whether mould is dangerous."
+title: "Damp & Mould Advice: Causes & Treatment"
+description: "Practical, practitioner-checked damp and mould advice — how to get rid of it, what causes condensation and damp, costs, and whether mould is dangerous."
 pillar: "advice"
 audience: "landlord"
 targetKeyword: "damp and mould advice"

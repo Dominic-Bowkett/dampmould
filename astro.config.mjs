@@ -15,6 +15,9 @@ export default defineConfig({
   // Trailing slashes off → clean canonical URLs (/awaabs-law, not /awaabs-law/).
   trailingSlash: "never",
   build: {
-    format: "directory",
+    // Emit /awaabs-law.html (not /awaabs-law/index.html) so Cloudflare Pages
+    // serves the no-slash URL with 200 — matching our canonicals/sitemap/links
+    // and avoiding the /path -> /path/ 308 redirect chain.
+    format: "file",
   },
 });

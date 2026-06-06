@@ -1,6 +1,6 @@
 ---
 title: "Awaab's Law Timescales & Deadlines Explained"
-description: "Awaab's Law timescales explained: the deadlines for investigating damp and mould, the written summary, starting repairs, and the emergency response — in plain English."
+description: "Awaab's Law timescales explained: the deadlines to investigate damp and mould, send a written summary, start repairs, and act on emergencies."
 pillar: "a"
 audience: "landlord"
 targetKeyword: "awaab's law timescales"

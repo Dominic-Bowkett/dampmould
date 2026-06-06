@@ -1,6 +1,6 @@
 ---
 title: "Tenants' Rights on Damp and Mould (UK)"
-description: "Your tenants' rights on damp and mould in the UK: what your landlord must do, how to report it, whether it's your fault, and the steps to take if they don't act. Plain-English."
+description: "Your rights as a tenant on damp and mould in the UK: what your landlord must do, how to report it, and the steps to take if they don't act."
 pillar: "b"
 audience: "tenant"
 targetKeyword: "tenants' rights damp and mould uk"

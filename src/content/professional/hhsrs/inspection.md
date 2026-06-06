@@ -1,6 +1,6 @@
 ---
 title: "HHSRS Inspection Guide (Step by Step)"
-description: "A step-by-step guide to carrying out an HHSRS inspection — preparing, surveying the property, identifying hazards, assessing likelihood and harm, and recording your findings."
+description: "An HHSRS inspection guide, step by step: preparing, surveying the property, identifying hazards, assessing likelihood and harm, and recording findings."
 pillar: "c"
 audience: "professional"
 targetKeyword: "hhsrs inspection"
