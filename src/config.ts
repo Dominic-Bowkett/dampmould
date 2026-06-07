@@ -30,18 +30,19 @@ export const SITE = {
 export const AUTHOR = {
   name: "Dominic Bowkett",
   // Post-nominals / accreditations shown after the name + emitted as hasCredential schema.
+  // MRPSA and ACABE lead as the most prominent credentials.
   credentials: [
+    "MRPSA",
+    "ACABE",
     "CertDEA",
+    "Retrofit Assessor",
+    "MSc Building Surveying",
     "BA (Hons)",
     "GDL",
-    "MSc Building Surveying",
-    "Retrofit Assessor",
-    "MRPSA",
-    "TrustMark Registered",
   ],
-  jobTitle: "Domestic Energy Assessor, Retrofit Assessor & Building Surveyor",
+  jobTitle: "Building Surveyor, Domestic Energy Assessor & Retrofit Assessor",
   bioShort:
-    "Dominic is a qualified Domestic Energy Assessor, Retrofit Assessor and building surveyor (MSc Building Surveying) specialising in housing health, HHSRS and damp & mould. He also trains and assesses DEAs and Retrofit Assessors with Energy Trust.",
+    "Dominic is a building surveyor (MRPSA, ACABE) and qualified Domestic Energy Assessor and Retrofit Assessor specialising in housing health, HHSRS and damp & mould. He also trains and assesses DEAs and Retrofit Assessors with Energy Trust.",
   // TODO: replace with real author photo before launch.
   photo: "/images/author-dom.jpg",
   aboutUrl: "/about",

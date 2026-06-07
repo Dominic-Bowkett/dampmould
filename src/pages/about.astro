@@ -23,13 +23,16 @@ const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crum
 
 // Credential glossary — explains each post-nominal in plain English.
 const credentialNotes = [
-  { code: "CertDEA", note: "Certified Domestic Energy Assessor — qualified to produce Energy Performance Certificates (EPCs)." },
+  { code: "MRPSA", note: "Member of the Residential Property Surveyors Association (RPSA)." },
+  { code: "ACABE", note: "Associate of the Chartered Association of Building Engineers (CABE)." },
+  { code: "CertDEA", note: "Certified Domestic Energy Assessor — qualified to produce Energy Performance Certificates (EPCs); accredited with Elmhurst, ECMK and Quidos." },
   { code: "Retrofit Assessor", note: "Qualified Retrofit Assessor, registered with ECMK, Elmhurst and Quidos." },
   { code: "MSc Building Surveying", note: "Master of Science in Building Surveying." },
   { code: "BA (Hons)", note: "Bachelor of Arts with Honours." },
   { code: "GDL", note: "Graduate Diploma in Law — conversion qualification in English law." },
-  { code: "MRPSA", note: "Member of the Residential Property Surveyors Association (RPSA)." },
-  { code: "TrustMark Registered", note: "Registered under TrustMark, the Government-endorsed quality scheme." },
+  { code: "Associate, Energy Institute", note: "Associate of the Energy Institute (AMEI)." },
+  { code: "The Property Ombudsman", note: "Member of The Property Ombudsman Scheme for RPSA surveying work." },
+  { code: "TrustMark", note: "Registered under TrustMark, the Government-endorsed quality scheme." },
 ];
 
 const lastReviewed = new Date("2026-06-06");
