@@ -29,11 +29,19 @@ export const SITE = {
  */
 export const AUTHOR = {
   name: "Dominic Bowkett",
-  // Post-nominals shown after the name.
-  credentials: ["CertDEA", "BA Hons", "GDL", "MSc", "MRPSA Trustmark"],
-  jobTitle: "Domestic Energy Assessor & Building Surveyor",
+  // Post-nominals / accreditations shown after the name + emitted as hasCredential schema.
+  credentials: [
+    "CertDEA",
+    "BA (Hons)",
+    "GDL",
+    "MSc Building Surveying",
+    "Retrofit Assessor",
+    "MRPSA",
+    "TrustMark Registered",
+  ],
+  jobTitle: "Domestic Energy Assessor, Retrofit Assessor & Building Surveyor",
   bioShort:
-    "Dominic is a qualified Domestic Energy Assessor and building surveyor specialising in housing health, HHSRS assessment and damp & mould compliance.",
+    "Dominic is a qualified Domestic Energy Assessor, Retrofit Assessor and building surveyor (MSc Building Surveying) specialising in housing health, HHSRS and damp & mould. He also trains and assesses DEAs and Retrofit Assessors with Energy Trust.",
   // TODO: replace with real author photo before launch.
   photo: "/images/author-dom.jpg",
   aboutUrl: "/about",

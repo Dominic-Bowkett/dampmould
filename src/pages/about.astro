@@ -22,13 +22,14 @@ const crumbs: Crumb[] = [
 const schema = graph(organizationSchema(), personSchema(), breadcrumbSchema(crumbs));
 
 // Credential glossary — explains each post-nominal in plain English.
-// TODO: Dom to confirm the exact awarding bodies / wording for each.
 const credentialNotes = [
   { code: "CertDEA", note: "Certified Domestic Energy Assessor — qualified to produce Energy Performance Certificates (EPCs)." },
-  { code: "BA Hons", note: "Bachelor of Arts with Honours." },
+  { code: "Retrofit Assessor", note: "Qualified Retrofit Assessor, registered with ECMK, Elmhurst and Quidos." },
+  { code: "MSc Building Surveying", note: "Master of Science in Building Surveying." },
+  { code: "BA (Hons)", note: "Bachelor of Arts with Honours." },
   { code: "GDL", note: "Graduate Diploma in Law — conversion qualification in English law." },
-  { code: "MSc", note: "Master of Science. <!-- TODO: Dom to add subject/field -->" },
-  { code: "MRPSA (Trustmark)", note: "Member of the Residential Property Surveyors Association, Trustmark-registered." },
+  { code: "MRPSA", note: "Member of the Residential Property Surveyors Association (RPSA)." },
+  { code: "TrustMark Registered", note: "Registered under TrustMark, the Government-endorsed quality scheme." },
 ];
 
 const lastReviewed = new Date("2026-06-06");
@@ -65,12 +66,19 @@ const fmt = (d: Date) =>
 
       <h2>Who I am</h2>
       <p>
-        I'm a qualified Domestic Energy Assessor and building surveyor working in
-        residential property condition and housing health. My focus is the area
-        where building performance meets people's wellbeing: damp, mould,
-        ventilation and the hazards assessed under the Housing Health and Safety
-        Rating System (HHSRS). You can also find me at
+        I'm a qualified Domestic Energy Assessor, Retrofit Assessor and building
+        surveyor (MSc Building Surveying) working in residential property
+        condition and housing health. My focus is the area where building
+        performance meets people's wellbeing: damp, mould, ventilation and the
+        hazards assessed under the Housing Health and Safety Rating System
+        (HHSRS). You can also find me at
         <a href={AUTHOR.website} target="_blank" rel="noopener">{AUTHOR.websiteLabel}</a>.
+      </p>
+      <p>
+        Alongside my own assessment and survey work, I'm a <strong>trainer and
+        assessor of Domestic Energy Assessors and Retrofit Assessors with Energy
+        Trust</strong> — so I both do this work and help train the people entering
+        the profession.
       </p>
       <p>
         <!-- TODO: Dom to add real career detail — years of experience, types of
