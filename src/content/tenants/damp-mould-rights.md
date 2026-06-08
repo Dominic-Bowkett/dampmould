@@ -33,7 +33,7 @@ along with exactly what to do.
 > **This is general information for England, not legal advice.** Rules differ in
 > Scotland and Wales. For your situation, get advice from a qualified solicitor.
 > Official sources: [gov.uk](https://www.gov.uk) and
-> [legislation.gov.uk](https://www.legislation.gov.uk).
+> legislation.gov.uk.
 
 ## Your rights in a nutshell
 

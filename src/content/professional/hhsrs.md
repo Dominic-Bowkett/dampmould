@@ -31,7 +31,7 @@ scoring actually work, and how councils enforce it.
 
 > **General information for England, not legal advice.** HHSRS also applies in
 > Wales, with differences. Confirm the current position and guidance on
-> [gov.uk](https://www.gov.uk) and [legislation.gov.uk](https://www.legislation.gov.uk).
+> [gov.uk](https://www.gov.uk) and legislation.gov.uk.
 
 ## What is HHSRS?
 

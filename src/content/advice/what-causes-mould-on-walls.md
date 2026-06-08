@@ -77,5 +77,6 @@ accept "it's your lifestyle" without investigation — see
 ## Related advice
 
 - [How to get rid of mould on walls permanently](/advice/how-to-get-rid-of-mould-on-walls)
+- [How to get rid of mould in the bedroom](/advice/mould-in-bedroom)
 - [Condensation: why it happens and how to stop it](/advice/condensation)
 - [Is mould dangerous?](/advice/is-mould-dangerous)

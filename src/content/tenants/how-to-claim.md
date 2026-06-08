@@ -37,7 +37,7 @@ process step by step, so you know what to do and what to expect.
 
 > **General information for England, not legal advice.** For advice on your
 > claim, speak to a regulated solicitor. Official sources:
-> [gov.uk](https://www.gov.uk), [legislation.gov.uk](https://www.legislation.gov.uk).
+> [gov.uk](https://www.gov.uk), legislation.gov.uk.
 
 ## Before you start
 

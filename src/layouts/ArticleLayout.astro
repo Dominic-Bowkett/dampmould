@@ -58,7 +58,9 @@ const {
   relatedLinks = [],
 } = Astro.props;
 
-const path = Astro.url.pathname;
+// Clean the path (build.format "file" appends ".html") so the Article schema
+// URL matches the canonical / sitemap 200 URL.
+const path = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "") || "/";
 
 // Human-readable, machine-readable dates.
 const fmt = (d: Date) =>

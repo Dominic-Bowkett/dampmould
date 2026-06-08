@@ -30,7 +30,7 @@ it applies to, and what it means for you, whether you rent your home or own one.
 > **This is general information, not legal advice.** Awaab's Law is detailed and
 > still being phased in. For your situation, take advice from a qualified
 > solicitor or surveyor, and always check the current rules on
-> [gov.uk](https://www.gov.uk) and [legislation.gov.uk](https://www.legislation.gov.uk).
+> [gov.uk](https://www.gov.uk) and legislation.gov.uk.
 
 ## Awaab's Law at a glance
 

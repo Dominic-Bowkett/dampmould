@@ -30,7 +30,7 @@ means in practice.
 > timescales are set by regulations and have been introduced in phases. The
 > *structure* below is stable, but the precise number of days for each stage is
 > exactly the kind of detail that changes. Always confirm the current deadlines
-> on [gov.uk](https://www.gov.uk) and [legislation.gov.uk](https://www.legislation.gov.uk).
+> on [gov.uk](https://www.gov.uk) and legislation.gov.uk.
 
 <!-- TODO: Dom to populate every timescale in this guide with the confirmed
      statutory figures and cite the specific regulations. Until then the day

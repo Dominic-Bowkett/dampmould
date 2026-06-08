@@ -30,11 +30,15 @@ const {
 } = Astro.props;
 
 const siteBase = SITE.url.replace(/\/$/, "");
+// Clean the request path for canonicals: with build.format "file", Astro.url.pathname
+// includes ".html" (e.g. /awaabs-law.html), which 308-redirects to the clean URL on
+// Cloudflare. Strip it so canonicals/OG point at the 200 URL the sitemap uses.
+const cleanPath = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "") || "/";
 // Build canonical from the current path unless one is explicitly passed.
 // Concatenate (don't use `new URL`) so the configured domain keeps its exact form.
 const canonicalUrl = canonical
   ? (/^https?:\/\//.test(canonical) ? canonical : `${siteBase}${canonical}`)
-  : `${siteBase}${Astro.url.pathname}`;
+  : `${siteBase}${cleanPath}`;
 
 const ogImageUrl = /^https?:\/\//.test(ogImage) ? ogImage : `${siteBase}${ogImage}`;
 

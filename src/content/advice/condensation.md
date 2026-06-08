@@ -84,5 +84,6 @@ accept "it's just your lifestyle" without investigation — see
 ## Related advice
 
 - [How to stop condensation on windows](/advice/condensation-on-windows)
+- [How to get rid of mould in the bedroom](/advice/mould-in-bedroom)
 - [The types of damp explained](/advice/types-of-damp)
 - [What causes mould on walls?](/advice/what-causes-mould-on-walls)
